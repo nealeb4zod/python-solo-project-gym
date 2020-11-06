@@ -36,3 +36,15 @@ First major project for Codeclan - a solo python web app to manage a gym.
 docker pull nealeb4zod/python-solo-project-gym
 
 docker run -d --publish 5000:5000 nealeb4zod/python-solo-project-gym
+
+### Alternatively...
+
+1. Clone the repo.
+2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+3. Start flask app:
+```
+flask run
+```
