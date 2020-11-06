@@ -35,8 +35,7 @@ CREATE TABLE activities (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     instructor INT REFERENCES instructors(id),
-    date DATE NOT NULL,
-    time TIME NOT NULL,
+    date_time TIMESTAMP NOT NULL,
     duration INT NOT NULL,
     capacity INT NOT NULL,
     membership_type INT REFERENCES membership_types(id)
