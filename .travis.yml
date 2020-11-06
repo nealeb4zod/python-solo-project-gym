@@ -1,0 +1,13 @@
+sudo: required
+services:
+    - docker
+language: python
+python:
+    - "3.8"
+cache: pip
+install:
+    - pip install -r requirements.txt
+script:
+    - nose2
+after_success:
+    - sh .travis/deploy_dockerhub.sh && test “$TRAVIS_BRANCH” = “main” && sh .travis/deploy_heroku.sh
