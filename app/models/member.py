@@ -10,6 +10,7 @@ class Member:
         membership_type,
         start_date,
         active_membership,
+        id=None,
     ):
         self.first_name = first_name
         self.last_name = last_name
@@ -20,3 +21,4 @@ class Member:
         self.membership_type = membership_type
         self.start_date = start_date
         self.active_membership = active_membership
+        self.id = id

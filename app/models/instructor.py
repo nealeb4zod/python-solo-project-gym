@@ -7,6 +7,7 @@ class Instructor:
         address,
         phone_number,
         list_of_activities,
+        id=None,
     ):
         self.first_name = first_name
         self.last_name = last_name
@@ -14,3 +15,4 @@ class Instructor:
         self.address = address
         self.phone_number = phone_number
         self.list_of_activities = list_of_activities
+        self.id = id

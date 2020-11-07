@@ -8,7 +8,9 @@ class Activity:
         capacity,
         list_of_members,
         membership_type,
+        id = None,
     ):
+        self.id = id
         self.name = name
         self.instructor = instructor
         self.date_time = date_time
