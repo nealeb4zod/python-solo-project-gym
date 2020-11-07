@@ -6,15 +6,14 @@ from app.models.activity import Activity
 
 
 def add(activity):
-    sql = "INSERT INTO activities( name, instructor, date_time, duration, capacity, list_of_members, membership_type ) VALUES ( %s, %s, %s, %s, %s, %s, %s ) RETURNING *;"
+    sql = "INSERT INTO activities( name, instructor, date_time, duration, capacity, membership_type ) VALUES ( %s, %s, %s, %s, %s, %s) RETURNING *;"
     values = [
         activity.name,
         activity.instructor,
         activity.date_time,
         activity.duration,
         activity.capacity,
-        activity.list_of_members,
-        activity.membership_type
+        activity.membership_type,
     ]
     results = run_sql(sql, values)
     activity.id = results[0]["id"]
@@ -36,7 +35,6 @@ def get_all():
             row["date_time"],
             row["duration"],
             row["capacity"],
-            row["list_of_members"],
             row["membership_type"],
         )
         activities.append(activity)
@@ -59,7 +57,6 @@ def get_one(id):
             result["date_time"],
             result["duration"],
             result["capacity"],
-            result["list_of_members"],
             result["membership_type"],
         )
     return activity
@@ -80,15 +77,14 @@ def delete_one(id):
 
 # UPDATE an activity
 def edit(activity):
-    sql = "UPDATE activities SET ((name) = (%s), (instructor) = (%s), (date_time) = (%s), (duration) = (%s), (capacity) = (%s), (list_of_members) = (%s), (membership_type) = (%s) WHERE id = %s;"
+    sql = "UPDATE activities SET ((name) = (%s), (instructor) = (%s), (date_time) = (%s), (duration) = (%s), (capacity) = (%s),  (membership_type) = (%s) WHERE id = %s;"
     values = [
         activity.name,
         activity.instructor,
         activity.date_time,
         activity.duration,
         activity.capacity,
-        activity.list_of_members,
-        activity.membership_type
+        activity.membership_type,
         activity.id,
     ]
     results = run_sql(sql, values)

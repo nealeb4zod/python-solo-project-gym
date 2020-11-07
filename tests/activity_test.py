@@ -20,6 +20,7 @@ class TestActivity(unittest.TestCase):
             self.premium,
             "2020-05-01",
             True,
+            [],
         )
         self.member_list = [self.member_1]
         self.instructor_1 = Instructor(

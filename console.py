@@ -3,14 +3,17 @@ import pdb
 from app.models.instructor import Instructor
 from app.models.member import Member
 from app.models.membership_type import MembershipType
+from app.models.activity import Activity
 
 import app.repositories.instructor_repository as instructor_repository
 import app.repositories.member_repository as member_repository
 import app.repositories.membership_type_repository as membership_type_repository
+import app.repositories.activity_repository as activity_repository
 
 instructor_repository.delete_all()
 member_repository.delete_all()
 membership_type_repository.delete_all()
+activity_repository.delete_all()
 
 instructor_1 = Instructor(
     'Alan',
@@ -32,10 +35,7 @@ instructor_2 = Instructor(
 
 instructor_repository.add(instructor_1)
 instructor_repository.add(instructor_2)
-instructor_repository.get_all()
-instructor_repository.get_one(instructor_2.id)
-instructor_repository.delete_one(instructor_1.id)
-instructor_repository.get_all()
+
 
 premium = MembershipType("Premium")
 basic = MembershipType("Basic")
@@ -53,6 +53,7 @@ member_1 = Member(
     premium.id,
     '2020-03-03',
     True,
+    [],
 )
 member_2 = Member(
     'Scott',
@@ -64,13 +65,17 @@ member_2 = Member(
     basic.id,
     '2020-04-01',
     True,
+    [],
 )
 
+member_list = [member_2.id]
 member_repository.add(member_1)
 member_repository.add(member_2)
-member_repository.get_all()
-member_repository.get_one(member_2.id)
-member_repository.delete_one(member_1.id)
-member_repository.get_all()
+
+activity_1 = Activity("Yoga", instructor_2.id, "2020-11-13 13:00:00", 60, 20, [member_list], premium.id)
+activity_2 = Activity("Pilates", instructor_2.id, "2020-11-14 12:00:00", 60, 20, [member_list], basic.id)
+
+activity_repository.add(activity_1)
+activity_repository.add(activity_2)
 
 pdb.set_trace()

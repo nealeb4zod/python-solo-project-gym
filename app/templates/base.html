@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{{ title }} || Gym Hero</title>
+</head>
+
+<body>
+    <hgroup id="header">
+        <h1>Gym Hero</h1>
+    </hgroup>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/members">Members</a>
+                <ul>
+                    <li>
+                        <a href="/members/add">Add A Member</a>
+                    </li>
+                    <li>
+                        <a href="/members/edit">Edit A Member</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="/activities">Activities</a>
+                <ul>
+                    <li>
+                        <a href="/activities/add">Add an Activity</a>
+                    </li>
+                    <li>
+                        <a href="/activities/edit">Edit and Activity</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="/instructors">Instructors</a>
+                <ul>
+                    <li>
+                        <a href="/instructors/add">Add an Instructor</a>
+                    </li>
+                    <li>
+                        <a href="/instructors/edit">Edit an Instructor</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
