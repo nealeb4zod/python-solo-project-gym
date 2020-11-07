@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flexcards">
+    {% for member in members %}
+        <div class="card">
+            <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo" >
+            <div class="container">
+                <h4><b>{{member.first_name}} {{member.last_name}}</b></h4>
+                <p>Membership No: {{member.id}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

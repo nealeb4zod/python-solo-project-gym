@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/3b9a04f840.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <title>{{ title }} || East Side Gym</title>
+</head>
+<body>
+    <hgroup id="header">
+        <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
+        <span>East Side Gym</span>
+        <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
+    </hgroup>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Members
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/members">View all Members</a>
+                <a href="/members/add">Add A Member</a>
+                <a href="/members/edit">Edit A Member</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Activities
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/activities">View all Activities</a>
+                <a href="/activities/add">Add an Activity</a>
+                <a href="/activities/edit">Edit and Activity</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Instructors
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/instructors">View all Instructors</a>
+                <a href="/instructors/add">Add an Instructor</a>
+                <a href="/instructors/edit">Edit an Instructor</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Bookings
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/bookings">View all Bookings</a>
+                <a href="/bookings/add">Add an Booking</a>
+                <a href="/bookings/edit">Edit an Booking</a>
+            </div>
+        </div>
+
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

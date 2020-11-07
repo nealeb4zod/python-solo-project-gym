@@ -24,8 +24,8 @@ def get_all():
 
     for row in results:
         membership_type = membership_type(
-            row["id"],
             row["type"]
+            row["id"],
         )
         membership_types.append(membership_type)
     return membership_types
@@ -33,16 +33,14 @@ def get_all():
 
 # SELECT an membership_type
 def get_one(id):
-    membership_types = []
-
     sql = "SELECT * FROM membership_types WHERE id = %s"
     value = [id]
     result = run_sql(sql, value)[0]
 
     if result is not None:
         membership_type = membership_type(
-            result["id"],
             result["type"]
+            result["id"],
         )
     return membership_type
 
@@ -62,7 +60,7 @@ def delete_one(id):
 
 # UPDATE an membership_type
 def edit(membership_type):
-    sql = "UPDATE membership_types SET (type = (%s) WHERE id = %s;"
+    sql = "UPDATE membership_types SET (type) = (%s) WHERE id = %s;"
     values = [
         membership_type.type,
         membership_type.id,

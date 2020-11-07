@@ -1,3 +1,4 @@
+DROP TABLE bookings;
 DROP TABLE activities;
 DROP TABLE members;
 DROP TABLE membership_types;
@@ -39,4 +40,10 @@ CREATE TABLE activities (
     duration INT NOT NULL,
     capacity INT NOT NULL,
     membership_type INT REFERENCES membership_types(id)
+);
+
+CREATE TABLE bookings (
+    id SERIAL PRIMARY KEY,
+    activity INT REFERENCES activities(id),
+    member INT REFERENCES members(id)
 );

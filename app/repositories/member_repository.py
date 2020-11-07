@@ -32,7 +32,6 @@ def get_all():
 
     for row in results:
         member = Member(
-            row["id"],
             row["first_name"],
             row["last_name"],
             row["address"],
@@ -41,23 +40,22 @@ def get_all():
             row["email_address"],
             row["membership_type"],
             row["start_date"],
-            row["active_membership"]
+            row["active_membership"],
+            row["id"]
         )
         members.append(member)
+    import pdb; pdb.set_trace()
     return members
 
 
 # SELECT an member
 def get_one(id):
-    members = []
-
     sql = "SELECT * FROM members WHERE id = %s"
     value = [id]
     result = run_sql(sql, value)[0]
 
     if result is not None:
         member = Member(
-            result["id"],
             result["first_name"],
             result["last_name"],
             result["address"],
@@ -66,7 +64,8 @@ def get_one(id):
             result["email_address"],
             result["membership_type"],
             result["start_date"],
-            result["active_membership"]
+            result["active_membership"],
+            result["id"],
         )
     return member
 
@@ -100,3 +99,8 @@ def edit(member):
         member.id,
     ]
     results = run_sql(sql, values)
+
+# def activities(user):
+#     activities = []
+
+#     sql =

@@ -20,7 +20,7 @@ def add(activity):
     return activity
 
 
-# SELECT all activitys
+# SELECT all activities
 def get_all():
     activities = []
 
@@ -29,13 +29,13 @@ def get_all():
 
     for row in results:
         activity = Activity(
-            row["id"],
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
             row["membership_type"],
+            row["id"],
         )
         activities.append(activity)
     return activities
@@ -43,26 +43,24 @@ def get_all():
 
 # SELECT an activity
 def get_one(id):
-    activitys = []
-
     sql = "SELECT * FROM activities WHERE id = %s"
     value = [id]
     result = run_sql(sql, value)[0]
 
     if result is not None:
         activity = Activity(
-            result["id"],
             result["name"],
             result["instructor"],
             result["date_time"],
             result["duration"],
             result["capacity"],
             result["membership_type"],
+            result["id"],
         )
     return activity
 
 
-# DELETE all activitys
+# DELETE all activities
 def delete_all():
     sql = "DELETE FROM public.activities"
     results = run_sql(sql)

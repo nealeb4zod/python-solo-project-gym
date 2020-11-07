@@ -4,11 +4,13 @@ from app.models.instructor import Instructor
 from app.models.member import Member
 from app.models.membership_type import MembershipType
 from app.models.activity import Activity
+from app.models.booking import Booking
 
 import app.repositories.instructor_repository as instructor_repository
 import app.repositories.member_repository as member_repository
 import app.repositories.membership_type_repository as membership_type_repository
 import app.repositories.activity_repository as activity_repository
+import app.repositories.booking_repository as booking_repository
 
 instructor_repository.delete_all()
 member_repository.delete_all()
@@ -77,5 +79,8 @@ activity_2 = Activity("Pilates", instructor_2.id, "2020-11-14 12:00:00", 60, 20,
 
 activity_repository.add(activity_1)
 activity_repository.add(activity_2)
+
+booking_1 = Booking(activity_1.id, member_1.id)
+booking_repository.add(booking_1)
 
 pdb.set_trace()

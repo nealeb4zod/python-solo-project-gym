@@ -28,12 +28,12 @@ def get_all():
 
     for row in results:
         instructor = Instructor(
-            row["id"],
             row["first_name"],
             row["last_name"],
             row["address"],
             row["phone_number"],
             row["date_of_birth"],
+            row["id"],
         )
         instructors.append(instructor)
     return instructors
@@ -41,20 +41,18 @@ def get_all():
 
 # SELECT an instructor
 def get_one(id):
-    instructors = []
-
     sql = "SELECT * FROM instructors WHERE id = %s"
     value = [id]
     result = run_sql(sql, value)[0]
 
     if result is not None:
         instructor = Instructor(
-            result["id"],
             result["first_name"],
             result["last_name"],
             result["address"],
             result["phone_number"],
             result["date_of_birth"],
+            result["id"],
         )
     return instructor
 
