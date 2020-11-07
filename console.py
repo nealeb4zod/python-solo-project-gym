@@ -2,12 +2,15 @@ import pdb
 
 from app.models.instructor import Instructor
 from app.models.member import Member
+from app.models.membership_type import MembershipType
 
 import app.repositories.instructor_repository as instructor_repository
 import app.repositories.member_repository as member_repository
+import app.repositories.membership_type_repository as membership_type_repository
 
 instructor_repository.delete_all()
 member_repository.delete_all()
+membership_type_repository.delete_all()
 
 instructor_1 = Instructor(
     'Alan',
@@ -34,6 +37,12 @@ instructor_repository.get_one(instructor_2.id)
 instructor_repository.delete_one(instructor_1.id)
 instructor_repository.get_all()
 
+premium = MembershipType("Premium")
+basic = MembershipType("Basic")
+membership_type_repository.add(premium)
+membership_type_repository.add(basic)
+
+
 member_1 = Member(
     'Kristen',
     'Mahood',
@@ -41,7 +50,7 @@ member_1 = Member(
     '9354 Merry Center',
     '8393426533',
     'kmahood0@bloomberg.com',
-    'Basic',
+    premium.id,
     '2020-03-03',
     True,
 )
@@ -52,7 +61,7 @@ member_2 = Member(
     'Great Scott House',
     '1',
     'poshgit@bloomberg.com',
-    'Premium',
+    basic.id,
     '2020-04-01',
     True,
 )

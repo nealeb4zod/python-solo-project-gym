@@ -74,13 +74,13 @@ def delete_one(id):
 
 # UPDATE an instructor
 def edit(instructor):
-    sql = "UPDATE instructors SET (id) = (%s), (first_name = (%s), (last_name) = (%s), (address) = (%s), (phone_number) = (%s), (date_of_birth) = (%s);"
+    sql = "UPDATE instructors SET  (first_name = (%s), (last_name) = (%s), (address) = (%s), (phone_number) = (%s), (date_of_birth) = (%s) WHERE id = %s;"
     values = [
-        instructor.id,
         instructor.first_name,
         instructor.last_name,
         instructor.address,
         instructor.phone_number,
         instructor.date_of_birth,
+        instructor.id,
     ]
     results = run_sql(sql, values)

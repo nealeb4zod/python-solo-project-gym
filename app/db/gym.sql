@@ -15,7 +15,7 @@ CREATE TABLE instructors (
 
 CREATE TABLE membership_types (
     id SERIAL PRIMARY KEY,
-    typed VARCHAR(255) NOT NULL
+    type VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE members (
@@ -25,7 +25,7 @@ CREATE TABLE members (
     date_of_birth DATE NOT NULL,
     address TEXT,
     phone_number VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email_address VARCHAR(255) NOT NULL,
     membership_type INT REFERENCES membership_types(id),
     start_date DATE NOT NULL,
     active_membership BOOLEAN NOT NULL

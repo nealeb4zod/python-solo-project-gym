@@ -6,7 +6,7 @@ from app.models.member import Member
 
 
 def add(member):
-    sql = "INSERT INTO members( first_name, last_name, date_of_birth, address, phone_number, email, membership_type, start_date, active_membership ) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s ) RETURNING *;"
+    sql = "INSERT INTO members( first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership ) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s ) RETURNING *;"
     values = [
         member.first_name,
         member.last_name,
@@ -31,14 +31,14 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
-        member = member(
+        member = Member(
             row["id"],
             row["first_name"],
             row["last_name"],
             row["address"],
             row["phone_number"],
             row["date_of_birth"],
-            row["email"],
+            row["email_address"],
             row["membership_type"],
             row["start_date"],
             row["active_membership"]
@@ -56,7 +56,7 @@ def get_one(id):
     result = run_sql(sql, value)[0]
 
     if result is not None:
-        member = member(
+        member = Member(
             result["id"],
             result["first_name"],
             result["last_name"],
@@ -86,9 +86,8 @@ def delete_one(id):
 
 # UPDATE an member
 def edit(member):
-    sql = "UPDATE members SET (id) = (%s), (first_name = (%s), (last_name) = (%s), (address) = (%s), (phone_number) = (%s), (date_of_birth) = (%s),  (email) = (%s), (membership_type) = (%s), (start_date) = (%s), (active_membership) = (%s);"
+    sql = "UPDATE members SET (first_name = (%s), (last_name) = (%s), (address) = (%s), (phone_number) = (%s), (date_of_birth) = (%s),  (email_address) = (%s), (membership_type) = (%s), (start_date) = (%s), (active_membership) = (%s) WHERE id = %s;"
     values = [
-        member.id,
         member.first_name,
         member.last_name,
         member.address,
@@ -98,5 +97,6 @@ def edit(member):
         member.membership_type,
         member.start_date,
         member.active_membership,
+        member.id,
     ]
     results = run_sql(sql, values)
