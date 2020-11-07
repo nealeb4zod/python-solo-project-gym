@@ -24,7 +24,7 @@ def get_all():
 
     for row in results:
         membership_type = membership_type(
-            row["type"]
+            row["type"],
             row["id"],
         )
         membership_types.append(membership_type)
@@ -39,7 +39,7 @@ def get_one(id):
 
     if result is not None:
         membership_type = membership_type(
-            result["type"]
+            result["type"],
             result["id"],
         )
     return membership_type

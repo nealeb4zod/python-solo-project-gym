@@ -1,6 +1,6 @@
 from app.db.run_sql import run_sql
 
-from app.models.bookin import Booking
+from app.models.booking import Booking
 
 # CREATE booking
 

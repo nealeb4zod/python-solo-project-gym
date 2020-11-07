@@ -44,7 +44,7 @@ def get_all():
             row["id"]
         )
         members.append(member)
-    import pdb; pdb.set_trace()
+
     return members
 
 
@@ -100,7 +100,22 @@ def edit(member):
     ]
     results = run_sql(sql, values)
 
-# def activities(user):
-#     activities = []
+def activities(user):
+    activities = []
 
-#     sql =
+    sql = "SELECT * FROM activities INNER JOIN bookings on activities.id = bookings.activity where bookings.member = %s"
+    value = [user.id]
+    results = run_sql(sql, value)
+
+    for row in results:
+        activity = Activity(
+            result["name"],
+            result["instructor"],
+            result["date_time"],
+            result["duration"],
+            result["capacity"],
+            result["membership_type"],
+            result["id"],
+        )
+        activities.append(activity)
+    return activities
