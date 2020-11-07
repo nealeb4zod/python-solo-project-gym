@@ -5,7 +5,7 @@ from app.models.activity import Activity
 # CREATE activity
 
 
-def add(activity):
+def new(activity):
     sql = "INSERT INTO activities( name, instructor, date_time, duration, capacity, membership_type ) VALUES ( %s, %s, %s, %s, %s, %s) RETURNING *;"
     values = [
         activity.name,

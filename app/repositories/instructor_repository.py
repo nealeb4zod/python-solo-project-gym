@@ -5,7 +5,7 @@ from app.models.instructor import Instructor
 # CREATE instructor
 
 
-def add(instructor):
+def new(instructor):
     sql = "INSERT INTO instructors( first_name, last_name, date_of_birth, address, phone_number ) VALUES ( %s, %s, %s, %s, %s ) RETURNING *;"
     values = [
         instructor.first_name,

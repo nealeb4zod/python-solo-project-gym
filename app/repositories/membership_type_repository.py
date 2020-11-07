@@ -5,7 +5,7 @@ from app.models.membership_type import MembershipType
 # CREATE membership_type
 
 
-def add(membership_type):
+def new(membership_type):
     sql = "INSERT INTO membership_types ( type ) VALUES ( %s ) RETURNING *;"
     values = [
         membership_type.type,
@@ -23,7 +23,7 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
-        membership_type = membership_type(
+        membership_type = MembershipType(
             row["type"],
             row["id"],
         )
@@ -38,7 +38,7 @@ def get_one(id):
     result = run_sql(sql, value)[0]
 
     if result is not None:
-        membership_type = membership_type(
+        membership_type = MembershipType(
             result["type"],
             result["id"],
         )

@@ -1,11 +1,32 @@
 from app.db.run_sql import run_sql
 
 from app.models.member import Member
+from app.models.activity import Activity
+
+
+
+def get_activities(user_id):
+    activities = []
+
+    sql = "SELECT * FROM activities INNER JOIN bookings on activities.id = bookings.activity where bookings.member = %s"
+    value = [user_id]
+    results = run_sql(sql, value)
+
+    for row in results:
+        activity = Activity(
+            row["name"],
+            row["instructor"],
+            row["date_time"],
+            row["duration"],
+            row["capacity"],
+            row["membership_type"],
+            row["id"],
+        )
+        activities.append(activity)
+    return activities
 
 # CREATE member
-
-
-def add(member):
+def new(member):
     sql = "INSERT INTO members( first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership ) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s ) RETURNING *;"
     values = [
         member.first_name,
@@ -31,6 +52,7 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
+        activities_booked = get_activities(row["id"])
         member = Member(
             row["first_name"],
             row["last_name"],
@@ -41,6 +63,7 @@ def get_all():
             row["membership_type"],
             row["start_date"],
             row["active_membership"],
+            activities_booked,
             row["id"]
         )
         members.append(member)

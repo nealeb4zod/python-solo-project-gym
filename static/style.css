@@ -92,6 +92,7 @@ body {
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
     margin: 10px;
+    width: 200px;
 }
 
 /* On mouse-over, add a deeper shadow */

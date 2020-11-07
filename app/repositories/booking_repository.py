@@ -5,7 +5,7 @@ from app.models.booking import Booking
 # CREATE booking
 
 
-def add(booking):
+def new(booking):
     sql = "INSERT INTO bookings ( activity, member ) VALUES ( %s, %s) RETURNING *;"
     values = [ booking.activity, booking.member ]
     results = run_sql(sql, values)

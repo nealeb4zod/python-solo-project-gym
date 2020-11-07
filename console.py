@@ -35,14 +35,14 @@ instructor_2 = Instructor(
     [],
 )
 
-instructor_repository.add(instructor_1)
-instructor_repository.add(instructor_2)
+instructor_repository.new(instructor_1)
+instructor_repository.new(instructor_2)
 
 
 premium = MembershipType("Premium")
 basic = MembershipType("Basic")
-membership_type_repository.add(premium)
-membership_type_repository.add(basic)
+membership_type_repository.new(premium)
+membership_type_repository.new(basic)
 
 
 member_1 = Member(
@@ -71,16 +71,16 @@ member_2 = Member(
 )
 
 member_list = [member_2.id]
-member_repository.add(member_1)
-member_repository.add(member_2)
+member_repository.new(member_1)
+member_repository.new(member_2)
 
 activity_1 = Activity("Yoga", instructor_2.id, "2020-11-13 13:00:00", 60, 20, [member_list], premium.id)
 activity_2 = Activity("Pilates", instructor_2.id, "2020-11-14 12:00:00", 60, 20, [member_list], basic.id)
 
-activity_repository.add(activity_1)
-activity_repository.add(activity_2)
+activity_repository.new(activity_1)
+activity_repository.new(activity_2)
 
 booking_1 = Booking(activity_1.id, member_1.id)
-booking_repository.add(booking_1)
+booking_repository.new(booking_1)
 
 pdb.set_trace()
