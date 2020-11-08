@@ -10,7 +10,7 @@ class Member:
         membership_type,
         start_date,
         active_membership,
-        activities_booked,
+        activities_booked = None,
         id=None,
     ):
         self.first_name = first_name

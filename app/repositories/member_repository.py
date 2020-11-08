@@ -35,7 +35,7 @@ def new(member):
         member.address,
         member.phone_number,
         member.email_address,
-        member.membership_type,
+        member.membership_type.id,
         member.start_date,
         member.active_membership,
     ]
@@ -56,9 +56,9 @@ def get_all():
         member = Member(
             row["first_name"],
             row["last_name"],
+            row["date_of_birth"],
             row["address"],
             row["phone_number"],
-            row["date_of_birth"],
             row["email_address"],
             row["membership_type"],
             row["start_date"],
@@ -81,9 +81,9 @@ def get_one(id):
         member = Member(
             result["first_name"],
             result["last_name"],
+            result["date_of_birth"],
             result["address"],
             result["phone_number"],
-            result["date_of_birth"],
             result["email_address"],
             result["membership_type"],
             result["start_date"],
@@ -112,9 +112,9 @@ def edit(member):
     values = [
         member.first_name,
         member.last_name,
+        member.date_of_birth,
         member.address,
         member.phone_number,
-        member.date_of_birth,
         member.email_address,
         member.membership_type,
         member.start_date,
@@ -122,23 +122,3 @@ def edit(member):
         member.id,
     ]
     results = run_sql(sql, values)
-
-def activities(user):
-    activities = []
-
-    sql = "SELECT * FROM activities INNER JOIN bookings on activities.id = bookings.activity where bookings.member = %s"
-    value = [user.id]
-    results = run_sql(sql, value)
-
-    for row in results:
-        activity = Activity(
-            result["name"],
-            result["instructor"],
-            result["date_time"],
-            result["duration"],
-            result["capacity"],
-            result["membership_type"],
-            result["id"],
-        )
-        activities.append(activity)
-    return activities

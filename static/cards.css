@@ -1,0 +1,66 @@
+.flexcards {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 40px;
+    color: #58595b;
+    font-family: "Josefin Sans", sans-serif;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    margin: 10px;
+    width: 200px;
+    height: auto;
+    padding: 2px 16px;
+    color: #58595b;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+
+#logo {
+    width: 100px;
+    height: auto;
+    padding: 20px;
+}
+#name {
+}
+#mem-no {
+}
+.card-btn {
+    color: #58595b;
+    border: 1px solid #58595b;
+    border-radius: 5px;
+    padding: 8px;
+}
+#edit-btn {
+    color: #58595b;
+    border: 1px solid #58595b;
+    border-radius: 5px;
+    padding: 8px;
+}
+a {
+    color: #58595b;
+    text-decoration: none;
+}
+.add-card {
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    margin: auto;
+    width: 200px;
+    height: auto;
+    padding: auto;
+}
+.add a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #58595b;
+}

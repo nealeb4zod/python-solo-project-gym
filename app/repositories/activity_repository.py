@@ -9,11 +9,11 @@ def new(activity):
     sql = "INSERT INTO activities( name, instructor, date_time, duration, capacity, membership_type ) VALUES ( %s, %s, %s, %s, %s, %s) RETURNING *;"
     values = [
         activity.name,
-        activity.instructor,
+        activity.instructor.id,
         activity.date_time,
         activity.duration,
         activity.capacity,
-        activity.membership_type,
+        activity.membership_type.id,
     ]
     results = run_sql(sql, values)
     activity.id = results[0]["id"]

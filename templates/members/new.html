@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form class="form">
+<form class="form" action="/members" method="POST">
     <h1>New Member</h1>
     <label for="first_name" >First Name:</label>
     <input name="first_name" id="first_name" placeholder="First name" type="text" required autofocus>
@@ -28,7 +28,7 @@
         <option value="True">Yes</option>
         <option value="False">No</option>
     </select>
-    <button>Submit</button>
+    <button type="submit">Add Member</button>
 </form>
 
 

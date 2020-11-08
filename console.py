@@ -52,7 +52,7 @@ member_1 = Member(
     '9354 Merry Center',
     '8393426533',
     'kmahood0@bloomberg.com',
-    premium.id,
+    premium,
     '2020-03-03',
     True,
     [],
@@ -64,23 +64,23 @@ member_2 = Member(
     'Great Scott House',
     '1',
     'poshgit@bloomberg.com',
-    basic.id,
+    basic,
     '2020-04-01',
     True,
     [],
 )
 
-member_list = [member_2.id]
+member_list = []
 member_repository.new(member_1)
-member_repository.new(member_2)
+# member_repository.new(member_2)
 
-activity_1 = Activity("Yoga", instructor_2.id, "2020-11-13 13:00:00", 60, 20, [member_list], premium.id)
-activity_2 = Activity("Pilates", instructor_2.id, "2020-11-14 12:00:00", 60, 20, [member_list], basic.id)
+activity_1 = Activity("Yoga", instructor_2, "2020-11-13 13:00:00", 60, 20, [member_list], premium)
+activity_2 = Activity("Pilates", instructor_2, "2020-11-14 12:00:00", 60, 20, [member_list], basic)
 
 activity_repository.new(activity_1)
 activity_repository.new(activity_2)
 
-booking_1 = Booking(activity_1.id, member_1.id)
+booking_1 = Booking(activity_1, member_1)
 booking_repository.new(booking_1)
 
 pdb.set_trace()
