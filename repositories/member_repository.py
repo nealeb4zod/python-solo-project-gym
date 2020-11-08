@@ -1,7 +1,7 @@
-from app.db.run_sql import run_sql
+from db.run_sql import run_sql
 
-from app.models.member import Member
-from app.models.activity import Activity
+from models.member import Member
+from models.activity import Activity
 
 
 
@@ -118,7 +118,7 @@ def edit(member):
         member.address,
         member.phone_number,
         member.email_address,
-        member.membership_type,
+        member.membership_type.id,
         member.start_date,
         member.active_membership,
         member.id,

@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 
-from app.models.member import Member
+from models.member import Member
 
-import app.repositories.member_repository as member_repository
-import app.repositories.membership_type_repository as membership_type_repository
+import repositories.member_repository as member_repository
+import repositories.membership_type_repository as membership_type_repository
 
 members_blueprint = Blueprint("members", __name__)
 
@@ -26,10 +26,11 @@ def create_member():
     email_address = request.form["email_address"]
     phone_number = request.form["phone_number"]
     address = request.form["address"]
-    membership_type = request.form["membership_type"]
+    membership_type_id = request.form["membership_type"]
     start_date = request.form["start_date"]
     active_membership = request.form["active_membership"]
 
+    membership_type = membership_type_repository.get_one(membership_type_id)
     new_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership)
     member_repository.new(new_member)
     return redirect("/members")

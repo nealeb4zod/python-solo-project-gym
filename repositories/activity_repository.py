@@ -1,6 +1,6 @@
-from app.db.run_sql import run_sql
+from db.run_sql import run_sql
 
-from app.models.activity import Activity
+from models.activity import Activity
 
 # CREATE activity
 
@@ -78,11 +78,11 @@ def edit(activity):
     sql = "UPDATE activities SET ((name) = (%s), (instructor) = (%s), (date_time) = (%s), (duration) = (%s), (capacity) = (%s),  (membership_type) = (%s) WHERE id = %s;"
     values = [
         activity.name,
-        activity.instructor,
+        activity.instructor.id,
         activity.date_time,
         activity.duration,
         activity.capacity,
-        activity.membership_type,
+        activity.membership_type.id,
         activity.id,
     ]
     results = run_sql(sql, values)

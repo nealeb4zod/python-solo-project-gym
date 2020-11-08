@@ -1,9 +1,9 @@
 import unittest
 
-from app.models.member import Member
-from app.models.membership_type import MembershipType
-from app.models.activity import Activity
-from app.models.instructor import Instructor
+from models.member import Member
+from models.membership_type import MembershipType
+from models.activity import Activity
+from models.instructor import Instructor
 
 
 class TestMember(unittest.TestCase):

@@ -1,7 +1,7 @@
-from app.db.run_sql import run_sql
+from db.run_sql import run_sql
 
-from app.models.instructor import Instructor
-from app.models.activity import Activity
+from models.instructor import Instructor
+from models.activity import Activity
 
 # CREATE instructor
 

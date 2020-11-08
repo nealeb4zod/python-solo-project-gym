@@ -1,6 +1,6 @@
-from app.db.run_sql import run_sql
+from db.run_sql import run_sql
 
-from app.models.membership_type import MembershipType
+from models.membership_type import MembershipType
 
 # CREATE membership_type
 

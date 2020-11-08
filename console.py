@@ -1,16 +1,16 @@
 import pdb
 
-from app.models.instructor import Instructor
-from app.models.member import Member
-from app.models.membership_type import MembershipType
-from app.models.activity import Activity
-from app.models.booking import Booking
+from models.instructor import Instructor
+from models.member import Member
+from models.membership_type import MembershipType
+from models.activity import Activity
+from models.booking import Booking
 
-import app.repositories.instructor_repository as instructor_repository
-import app.repositories.member_repository as member_repository
-import app.repositories.membership_type_repository as membership_type_repository
-import app.repositories.activity_repository as activity_repository
-import app.repositories.booking_repository as booking_repository
+importrepositories.instructor_repository as instructor_repository
+importrepositories.member_repository as member_repository
+importrepositories.membership_type_repository as membership_type_repository
+importrepositories.activity_repository as activity_repository
+importrepositories.booking_repository as booking_repository
 
 instructor_repository.delete_all()
 member_repository.delete_all()

@@ -1,6 +1,6 @@
 import unittest
 
-from app.models.membership_type import MembershipType
+from models.membership_type import MembershipType
 
 
 class TestMembershipType(unittest.TestCase):
