@@ -13,13 +13,11 @@ body {
     background-color: #054c36;
     margin: 0;
     text-align: center;
-    align-items: center;
-    display: flex;
-    flex-flow: row wrap;
     text-transform: uppercase;
     font-family: "Josefin Sans", sans-serif;
-    justify-content: space-between;
     color: #c7c7c7;
+    padding: 15px;
+    place-items: centre;
 }
 #header > span {
     font-size: 50pt;
@@ -68,13 +66,16 @@ body {
 a:visited,
 a:hover,
 a:active {
-    color: #58595b;
+    color: #c7c7c7;
+}
+a {
+    color: #c7c7c7;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #c4b59d;
+    background-color: #054c36;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -90,7 +91,7 @@ a:active {
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #086648;
 }
 
 .dropdown:hover .dropdown-content {

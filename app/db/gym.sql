@@ -44,6 +44,6 @@ CREATE TABLE activities (
 
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
-    activity INT REFERENCES activities(id),
-    member INT REFERENCES members(id)
+    activity INT REFERENCES activities(id) ON DELETE CASCADE,
+    member INT REFERENCES members(id) ON DELETE CASCADE
 );

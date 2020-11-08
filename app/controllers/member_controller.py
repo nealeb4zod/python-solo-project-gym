@@ -39,7 +39,7 @@ def edit_member(id):
     member = member_repository.get_one(id)
     membership_types = membership_type_repository.get_all()
     # import pdb; pdb.set_trace()
-    return render_template("/members/edit.html", member=member, membership_types=membership_types)
+    return render_template("/members/edit.html", member=member, membership_types=membership_types, title="Edit Member Details")
 
 @members_blueprint.route("/members/<id>", methods=["POST"])
 def update_member(id):
@@ -55,4 +55,15 @@ def update_member(id):
 
     updated_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership)
     member_repository.edit(updated_member)
+    return redirect("/members")
+
+@members_blueprint.route("/members/<id>")
+def show_details(id):
+    member = member_repository.get_one(id)
+    membership_type = membership_type_repository.get_one(member.membership_type)
+    return render_template("/members/show.html", member=member, membership_type=membership_type, title="Member Details")
+
+@members_blueprint.route("/members/<id>/delete")
+def delete_member(id):
+    member_repository.delete_one(id)
     return redirect("/members")

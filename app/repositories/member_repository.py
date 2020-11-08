@@ -77,6 +77,7 @@ def get_one(id):
     value = [id]
     result = run_sql(sql, value)[0]
 
+    activities_booked = get_activities(result["id"])
     if result is not None:
         member = Member(
             result["first_name"],
@@ -88,6 +89,7 @@ def get_one(id):
             result["membership_type"],
             result["start_date"],
             result["active_membership"],
+            activities_booked,
             result["id"],
         )
     return member

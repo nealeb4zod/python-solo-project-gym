@@ -33,19 +33,30 @@
 #mem-no {
 }
 .card-btn {
-    color: #58595b;
+    color: #c7c7c7;
     border: 1px solid #58595b;
     border-radius: 5px;
+    background-color: #086648;
     padding: 8px;
 }
+
+.card-btn a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #c7c7c7;
+}
+
+.card-btn:hover {
+    background-color: #0d7a58;
+}
+
 #edit-btn {
-    color: #58595b;
     border: 1px solid #58595b;
     border-radius: 5px;
     padding: 8px;
 }
 a {
-    color: #58595b;
     text-decoration: none;
 }
 .add-card {
@@ -57,10 +68,4 @@ a {
     width: 200px;
     height: auto;
     padding: auto;
-}
-.add a:link,
-a:visited,
-a:hover,
-a:active {
-    color: #58595b;
 }
