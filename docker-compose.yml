@@ -2,11 +2,11 @@ version: "3.7"
 
 services:
     web:
-        build: ./
-        command: python gym.py run -h 0.0.0.0
-        volumes:
-            - ./app/
+        build: .
         ports:
             - 5000:5000
         env_file:
             - ./.flaskenv
+        command: gym.py
+        volumes:
+            - ${PWD}:/.

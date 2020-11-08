@@ -38,7 +38,6 @@ def create_member():
 def edit_member(id):
     member = member_repository.get_one(id)
     membership_types = membership_type_repository.get_all()
-    # import pdb; pdb.set_trace()
     return render_template("/members/edit.html", member=member, membership_types=membership_types, title="Edit Member Details")
 
 @members_blueprint.route("/members/<id>", methods=["POST"])

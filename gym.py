@@ -2,10 +2,12 @@ from flask import Flask, render_template
 import os
 
 from app.controllers.member_controller import members_blueprint
+from app.controllers.instructor_controller import instructor_blueprint
 
 app = Flask(__name__)
 
 app.register_blueprint(members_blueprint)
+app.register_blueprint(instructor_blueprint)
 
 
 @app.route("/")

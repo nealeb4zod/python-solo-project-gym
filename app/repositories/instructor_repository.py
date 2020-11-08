@@ -1,8 +1,29 @@
 from app.db.run_sql import run_sql
 
 from app.models.instructor import Instructor
+from app.models.activity import Activity
 
 # CREATE instructor
+
+def get_activities(instructor_id):
+    activities = []
+
+    sql = "SELECT * FROM activities WHERE instructor = %s"
+    value = [instructor_id]
+    results = run_sql(sql, value)
+
+    for row in results:
+        activity = Activity(
+            row["name"],
+            row["instructor"],
+            row["date_time"],
+            row["duration"],
+            row["capacity"],
+            row["membership_type"],
+            row["id"],
+        )
+        activities.append(activity)
+    return activities
 
 
 def new(instructor):
@@ -27,12 +48,14 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
+        list_of_activities = get_activities(row["id"],)
         instructor = Instructor(
             row["first_name"],
             row["last_name"],
+            row["date_of_birth"],
             row["address"],
             row["phone_number"],
-            row["date_of_birth"],
+            list_of_activities,
             row["id"],
         )
         instructors.append(instructor)
@@ -45,13 +68,15 @@ def get_one(id):
     value = [id]
     result = run_sql(sql, value)[0]
 
+    list_of_activities = get_activities(id)
     if result is not None:
         instructor = Instructor(
             result["first_name"],
             result["last_name"],
+            result["date_of_birth"],
             result["address"],
             result["phone_number"],
-            result["date_of_birth"],
+            list_of_activities,
             result["id"],
         )
     return instructor

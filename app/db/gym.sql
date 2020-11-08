@@ -35,7 +35,7 @@ CREATE TABLE members (
 CREATE TABLE activities (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    instructor INT REFERENCES instructors(id),
+    instructor INT REFERENCES instructors(id) ON DELETE CASCADE,
     date_time TIMESTAMP NOT NULL,
     duration INT NOT NULL,
     capacity INT NOT NULL,
