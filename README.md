@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.com/nealeb4zod/python-solo-project-gym.svg?branch=main)](https://travis-ci.com/nealeb4zod/python-solo-project-gym)
 
-http://gym.nealejohnston.com/
-
 # python-solo-project-gym
 First major project for Codeclan - a solo python web app to manage a gym.
 
@@ -30,14 +28,6 @@ First major project for Codeclan - a solo python web app to manage a gym.
 >- The Gym could mark members and classes as active/deactivated. Deactivated members/classes will not appear when creating bookings.
 
 # To Run:
-
-### Available as docker container:
-
-docker pull nealeb4zod/python-solo-project-gym
-
-docker run -d --publish 5000:5000 nealeb4zod/python-solo-project-gym
-
-### Alternatively...
 
 1. Clone the repo.
 2. Install dependencies
