@@ -110,7 +110,7 @@ def delete_one(id):
 
 # UPDATE an member
 def edit(member):
-    sql = "UPDATE members SET (first_name, last_name, date_of_birth, address, phone_number,  email_address, membership_type, start_date, active_membership) = (%s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s;"
+    sql = "UPDATE members SET (first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership) = (%s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s;"
     values = [
         member.first_name,
         member.last_name,
