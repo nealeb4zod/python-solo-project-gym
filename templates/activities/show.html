@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="show-details">
+        <hgroup class='details-header'>
+            <h3>Name: {{activity.name}}</h3>
+        </hgroup>
+        <section class="details-body">
+            <hgroup>
+                <h4>
+                    Instructor: {{instructor.first_name}} {{instructor.last_name}}
+                </h4>
+                <h4>
+                    Date: {{activity.date_time.strftime("%d/%m/%Y")}}
+                </h4>
+                <h4>
+                    Time: {{activity.date_time.strftime("%d/%m/%Y")}}
+                </h4>
+                <h4>
+                    Duration: {{activity.duration}}
+                </h4>
+                <h4>
+                    Capacity: {{activity.capacity}}
+                </h4>
+            </hgroup>
+            <hr>
+            <h4>
+                Booked Members:
+            </h4>
+            <ul>
+                {% for member in activity.list_of_members %}
+                <li>
+                    <a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <hr>
+            <p>
+                <a class="card-btn" href="/activity/{{activity.id}}/edit">Edit Activity Details</i></a>
+            </p>
+        </section>
+
+    </section>
+{% endblock content %}

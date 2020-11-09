@@ -3,6 +3,8 @@ from db.run_sql import run_sql
 from models.instructor import Instructor
 from models.activity import Activity
 
+import repositories.activity_repository as activity_repository
+
 # CREATE instructor
 
 def get_activities(instructor_id):
@@ -13,12 +15,14 @@ def get_activities(instructor_id):
     results = run_sql(sql, value)
 
     for row in results:
+        list_of_members = activity_repository.get_members(row["id"])
         activity = Activity(
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
+            list_of_members,
             row["membership_type"],
             row["id"],
         )
@@ -106,5 +110,10 @@ def edit(instructor):
         instructor.date_of_birth,
         instructor.id,
     ]
-    # import pdb; pdb.set_trace()
     results = run_sql(sql, values)
+
+def activities(instructor_id):
+    sql = "SELECT * FROM activities WHERE instructor = %s;"
+    value = ["id"]
+    results = run_sql(sql, value)
+    return results

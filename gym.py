@@ -3,11 +3,13 @@ import os
 
 from controllers.member_controller import members_blueprint
 from controllers.instructor_controller import instructors_blueprint
+from controllers.activity_controller import activities_blueprint
 
 app = Flask(__name__)
 
 app.register_blueprint(members_blueprint)
 app.register_blueprint(instructors_blueprint)
+app.register_blueprint(activities_blueprint)
 
 
 @app.route("/")

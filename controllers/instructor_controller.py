@@ -42,9 +42,8 @@ def update_instructor(id):
     phone_number = request.form["phone_number"]
     address = request.form["address"]
 
-    list_of_activities = activity_repository.instructor(id)
+    list_of_activities = instructor_repository.activities(id)
     updated_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number, list_of_activities, id)
-    # import pdb; pdb.set_trace()
     instructor_repository.edit(updated_instructor)
     return redirect("/instructors")
 
