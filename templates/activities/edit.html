@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form class="form" action="/instructors/{{instructor.id}}" method="POST">
-    <h1>New Member</h1>
-    <label for="first_name" >First Name:</label>
-    <input name="first_name" id="first_name" placeholder="First name" type="text" value="{{instructor.first_name}}" required autofocus>
-    <label for="last_name" >Last name:</label>
-    <input name="last_name" id="last_name" placeholder="Last name" type="text" value="{{instructor.last_name}}" required>
-    <label for="date_of_birth" >Date of birth:</label>
-    <input name="date_of_birth" id="date_of_birth" placeholder="Date of birth:" type="date" value="{{instructor.date_of_birth}}" required>
-    <label for="address" >Address:</label>
-    <input name="address" id="address" placeholder="Address" type="textarea" value="{{instructor.address}}" required>
-    <label for="phone_number" >Phone number:</label>
-    <input name="phone_number" id="phone_number" placeholder="Phone number" type="text" value="{{instructor.phone_number}}" required>
+<form class="form" action="/activities/{{activity.id}}" method="POST">
+    <h1>Edit Activity</h1>
+    <label for="name" >Activity Name:</label>
+    <input name="name" id="name" placeholder="Activity Name" type="text" value="{{activity.name}}" required autofocus>
+    <label for="instructor" >Instructor:</label>
+    <select id="instructor" name="instructor">
+        {% for instructor in instructors %}
+            <option value="{{ instructor.id }}"{% if activity.instructor== instructor.id %} selected="selected"{% endif %}>{{ instructor.first_name }} {{ instructor.last_name }}</option>
+        {% endfor %}
+    </select>
+    <label for="date" >Date:</label>
+    <input name="date" id="date" placeholder="Date:" type="date" value="{{activity.date_time.strftime('%Y-%m-%d')}}" required>
+    <label for="time" >Time:</label>
+    <input name="time" id="time" placeholder="Time" type="time" value="{{activity.date_time.strftime('%X')}}" required>
+    <label for="duration" >Duration:</label>
+    <input name="duration" id="duration" placeholder="Duration" type="text" value="{{activity.duration}}" required>
+    <label for="capacity" >Capacity:</label>
+    <input name="capacity" id="capacity" placeholder="Capacity" type="text" value="{{activity.capacity}}" required>
+    <label for="membership_type" >Membership Type:</label>
+    <select id="membership_type" name="membership_type">
+        {% for membership_type in membership_types %}
+            <option value="{{ membership_type.id }}" {% if activity.membership_type== membership_type.id %} selected="selected"{% endif %} >{{ membership_type.type }}</option>
+        {% endfor %}
+    </select>
 
-    <button type="submit">Update Instructor</button>
+    <button type="submit">Update Activity</button>
 </form>
-
-
-
 {% endblock content %}

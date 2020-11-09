@@ -14,7 +14,7 @@
                     Date: {{activity.date_time.strftime("%d/%m/%Y")}}
                 </h4>
                 <h4>
-                    Time: {{activity.date_time.strftime("%X")}}
+                    Time: {{activity.date_time.strftime("%d/%m/%Y")}}
                 </h4>
                 <h4>
                     Duration: {{activity.duration}}
@@ -24,9 +24,6 @@
                 </h4>
                 <h4>
                     No. members booked for activity: {{no_members_booked}}
-                </h4>
-                <h4>
-                    Membership Type: {{membership_type.type}}
                 </h4>
 
             </hgroup>
@@ -43,7 +40,7 @@
             </ul>
             <hr>
             <p>
-                <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit Activity Details</i></a>
+                <a class="card-btn" href="/activity/{{activity.id}}/edit">Edit Activity Details</i></a>
             </p>
         </section>
 
