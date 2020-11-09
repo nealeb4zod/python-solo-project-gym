@@ -28,7 +28,7 @@
                 Booked Members:
             </h4>
             <ul>
-                {% for member in activity.list_of_members %}
+                {% for member in activity_members %}
                 <li>
                     <a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}}</a>
                 </li>

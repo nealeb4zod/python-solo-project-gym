@@ -42,16 +42,16 @@ def update_activity(id):
     phone_number = request.form["phone_number"]
     address = request.form["address"]
 
-    list_of_activities = activity_repository.activities(id)
-    updated_activity = Activity(first_name, last_name, date_of_birth, address, phone_number, list_of_activities, id)
+    updated_activity = Activity(first_name, last_name, date_of_birth, address, phone_number, id)
     activity_repository.edit(updated_activity)
     return redirect("/activities")
 
 @activities_blueprint.route("/activities/<id>")
 def show_details(id):
+    activity_members = activity_repository.get_members(id)
     activity = activity_repository.get_one(id)
     instructor = instructor_repository.get_one(activity.instructor)
-    return render_template("/activities/show.html", activity=activity, instructor=instructor, title="Activity Details")
+    return render_template("/activities/show.html", activity=activity, instructor=instructor, activity_members=activity_members, title="Activity Details")
 
 @activities_blueprint.route("/activities/<id>/delete")
 def delete_activity(id):

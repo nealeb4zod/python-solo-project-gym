@@ -10,7 +10,6 @@ class Member:
         membership_type,
         start_date,
         active_membership,
-        activities_booked = None,
         id=None,
     ):
         self.first_name = first_name
@@ -22,5 +21,4 @@ class Member:
         self.membership_type = membership_type
         self.start_date = start_date
         self.active_membership = active_membership
-        self.activities_booked = activities_booked
         self.id = id

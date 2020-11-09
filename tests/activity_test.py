@@ -20,16 +20,13 @@ class TestActivity(unittest.TestCase):
             self.premium,
             "2020-05-01",
             True,
-            [],
         )
-        self.member_list = [self.member_1]
         self.instructor_1 = Instructor(
             "Alan",
             "Johnston",
             "1999-08-13",
             "59 Avenue Avenue, Cowdenbeath, KY7 0GE",
             "0777666543",
-            [],
         )
         self.activity_1 = Activity(
             "Yoga",
@@ -37,11 +34,10 @@ class TestActivity(unittest.TestCase):
             "2020-11-13 13:00:00",
             60,
             20,
-            [self.member_list],
             self.premium,
         )
         self.activity_2 = Activity(
-            "Pilates", self.instructor_1, "2020-11-14 12:00:00", 60, 20, [], self.basic
+            "Pilates", self.instructor_1, "2020-11-14 12:00:00", 60, 20, self.basic
         )
 
     def test_activity_has_name(self):
@@ -58,9 +54,6 @@ class TestActivity(unittest.TestCase):
 
     def test_activity_has_capacity(self):
         self.assertEqual(20, self.activity_1.capacity)
-
-    def test_activity_has_list_of_members(self):
-        self.assertEqual(1, len(self.activity_1.list_of_members))
 
     def test_activity_has_membership_type(self):
         self.assertEqual("Premium", self.activity_1.membership_type.type)

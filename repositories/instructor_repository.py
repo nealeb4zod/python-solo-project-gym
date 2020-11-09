@@ -15,14 +15,12 @@ def get_activities(instructor_id):
     results = run_sql(sql, value)
 
     for row in results:
-        list_of_members = activity_repository.get_members(row["id"])
         activity = Activity(
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
-            list_of_members,
             row["membership_type"],
             row["id"],
         )
@@ -52,14 +50,12 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
-        list_of_activities = get_activities(row["id"],)
         instructor = Instructor(
             row["first_name"],
             row["last_name"],
             row["date_of_birth"],
             row["address"],
             row["phone_number"],
-            list_of_activities,
             row["id"],
         )
         instructors.append(instructor)
@@ -72,7 +68,6 @@ def get_one(id):
     value = [id]
     result = run_sql(sql, value)[0]
 
-    list_of_activities = get_activities(id)
     if result is not None:
         instructor = Instructor(
             result["first_name"],
@@ -80,7 +75,6 @@ def get_one(id):
             result["date_of_birth"],
             result["address"],
             result["phone_number"],
-            list_of_activities,
             result["id"],
         )
     return instructor

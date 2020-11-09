@@ -42,15 +42,15 @@ def update_instructor(id):
     phone_number = request.form["phone_number"]
     address = request.form["address"]
 
-    list_of_activities = instructor_repository.activities(id)
-    updated_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number, list_of_activities, id)
+    updated_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number, id)
     instructor_repository.edit(updated_instructor)
     return redirect("/instructors")
 
 @instructors_blueprint.route("/instructors/<id>")
 def show_details(id):
+    instructor_activities = instructor_repository.get_activities(id)
     instructor = instructor_repository.get_one(id)
-    return render_template("/instructors/show.html", instructor=instructor,  title="Instructor Details")
+    return render_template("/instructors/show.html", instructor=instructor, instructor_activities=instructor_activities, title="Instructor Details")
 
 @instructors_blueprint.route("/instructors/<id>/delete")
 def delete_instructor(id):

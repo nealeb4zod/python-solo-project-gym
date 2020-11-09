@@ -43,7 +43,7 @@
                 Booked Activities:
             </h4>
             <ul>
-            {% for activity in member.activities_booked %}
+            {% for activity in booked_activities %}
                 <li>
                     <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%I:%M %p")}}</a>
                 </li>

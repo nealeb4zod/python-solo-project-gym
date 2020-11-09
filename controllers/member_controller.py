@@ -55,16 +55,16 @@ def update_member(id):
 
 
     membership_type = membership_type_repository.get_one(membership_type_id)
-    activities_booked = member_repository.get_activities(id)
-    updated_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership, activities_booked, id)
+    updated_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership, id)
     member_repository.edit(updated_member)
     return redirect("/members")
 
 @members_blueprint.route("/members/<id>")
 def show_details(id):
     member = member_repository.get_one(id)
+    booked_activities = member_repository.get_activities(id)
     membership_type = membership_type_repository.get_one(member.membership_type)
-    return render_template("/members/show.html", member=member, membership_type=membership_type, title="Member Details")
+    return render_template("/members/show.html", member=member, membership_type=membership_type, booked_activities=booked_activities, title="Member Details")
 
 @members_blueprint.route("/members/<id>/delete")
 def delete_member(id):

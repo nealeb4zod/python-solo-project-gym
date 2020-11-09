@@ -22,7 +22,7 @@
                 Activities:
             </h4>
             <ul>
-            {% for activity in instructor.list_of_activities %}
+            {% for activity in instructor_activities %}
                 <li>
                     <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%I:%M %p")}}</a>
                 </li>
