@@ -97,7 +97,7 @@ def delete_one(id):
 
 # UPDATE an instructor
 def edit(instructor):
-    sql = "UPDATE instructors SET  (first_name = (%s), (last_name) = (%s), (address) = (%s), (phone_number) = (%s), (date_of_birth) = (%s) WHERE id = %s;"
+    sql = "UPDATE instructors SET  (first_name, last_name, address, phone_number, date_of_birth) = (%s, %s, %s, %s, %s) WHERE id = %s;"
     values = [
         instructor.first_name,
         instructor.last_name,
@@ -106,4 +106,5 @@ def edit(instructor):
         instructor.date_of_birth,
         instructor.id,
     ]
+    # import pdb; pdb.set_trace()
     results = run_sql(sql, values)

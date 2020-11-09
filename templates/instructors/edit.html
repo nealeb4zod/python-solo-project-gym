@@ -1,34 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form class="form" action="/members/{{member.id}}" method="POST">
+<form class="form" action="/instructors/{{instructor.id}}" method="POST">
     <h1>New Member</h1>
     <label for="first_name" >First Name:</label>
-    <input name="first_name" id="first_name" placeholder="First name" type="text" value="{{member.first_name}}" required autofocus>
+    <input name="first_name" id="first_name" placeholder="First name" type="text" value="{{instructor.first_name}}" required autofocus>
     <label for="last_name" >Last name:</label>
-    <input name="last_name" id="last_name" placeholder="Last name" type="text" value="{{member.last_name}}" required>
+    <input name="last_name" id="last_name" placeholder="Last name" type="text" value="{{instructor.last_name}}" required>
     <label for="date_of_birth" >Date of birth:</label>
-    <input name="date_of_birth" id="date_of_birth" placeholder="Date of birth:" type="date" value="{{member.date_of_birth}}" required>
-    <label for="email_address" >Email address:</label>
-    <input name="email_address" id="email_address" placeholder="Email address" type="text" value="{{member.email_address}}" required>
-    <label for="phone_number" >Phone number:</label>
-    <input name="phone_number" id="phone_number" placeholder="Phone number" type="text" value="{{member.phone_number}}" required>
+    <input name="date_of_birth" id="date_of_birth" placeholder="Date of birth:" type="date" value="{{instructor.date_of_birth}}" required>
     <label for="address" >Address:</label>
-    <input name="address" id="address" placeholder="Address" type="textarea" value="{{member.address}}" required>
-    <label for="membership_type" >Membership type:</label>
-    <select name="membership_type" id="membership_type">
-        {% for type in membership_types %}
-            <option value="{{type.id}}" {% if member.membership_type == type.id %} selected="selected" {% endif %} >{{type.type}}</option>
-        {% endfor %}
-    </select>
-    <label for="start_date" >Start date:</label>
-    <input name="start_date" id="start_date" type="date" value="{{member.start_date}}" required>
-    <label for="active_membership">Membership active:</label>
-    <select name="active_membership" id="active_membership">
-        <option value="True" {% if member.active_membership == True %} selected="selected" {% endif %} >Yes</option>
-        <option value="False"{% if member.active_membership == False %} selected="selected" {% endif %}>No</option>
-    </select>
-    <button type="submit">Update Member</button>
+    <input name="address" id="address" placeholder="Address" type="textarea" value="{{instructor.address}}" required>
+    <label for="phone_number" >Phone number:</label>
+    <input name="phone_number" id="phone_number" placeholder="Phone number" type="text" value="{{instructor.phone_number}}" required>
+
+    <button type="submit">Update Instructor</button>
 </form>
 
 

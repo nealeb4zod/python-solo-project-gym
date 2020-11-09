@@ -6,11 +6,11 @@ from models.membership_type import MembershipType
 from models.activity import Activity
 from models.booking import Booking
 
-importrepositories.instructor_repository as instructor_repository
-importrepositories.member_repository as member_repository
-importrepositories.membership_type_repository as membership_type_repository
-importrepositories.activity_repository as activity_repository
-importrepositories.booking_repository as booking_repository
+import repositories.instructor_repository as instructor_repository
+import repositories.member_repository as member_repository
+import repositories.membership_type_repository as membership_type_repository
+import repositories.activity_repository as activity_repository
+import repositories.booking_repository as booking_repository
 
 instructor_repository.delete_all()
 member_repository.delete_all()

@@ -1,36 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form class="form" action="/members" method="POST">
-    <h1>New Member</h1>
+
+<form class="form" action="/instructors" method="POST">
+    <h1>New Instructor</h1>
     <label for="first_name" >First Name:</label>
     <input name="first_name" id="first_name" placeholder="First name" type="text" required autofocus>
     <label for="last_name" >Last name:</label>
     <input name="last_name" id="last_name" placeholder="Last name" type="text" required>
     <label for="date_of_birth" >Date of birth:</label>
     <input name="date_of_birth" id="date_of_birth" placeholder="Date of birth:" type="date" required>
-    <label for="email_address" >Email address:</label>
-    <input name="email_address" id="email_address" placeholder="Email address" type="text" required>
-    <label for="phone_number" >Phone number:</label>
-    <input name="phone_number" id="phone_number" placeholder="Phone number" type="text" required>
     <label for="address" >Address:</label>
     <input name="address" id="address" placeholder="Address" type="textarea" required>
-    <label for="membership_type" >Membership type:</label>
-    <select name="membership_type" id="membership_type">
-        {% for type in membership_types %}
-            <option value="{{type.id}}">{{type.type}}</option>
-        {% endfor %}
-    </select>
-    <label for="start_date" >Start date:</label>
-    <input name="start_date" id="start_date" type="date" required>
-    <label for="active_membership">Membership active:</label>
-    <select name="active_membership" id="active_membership">
-        <option value="True">Yes</option>
-        <option value="False">No</option>
-    </select>
-    <button type="submit">Add Member</button>
+    <label for="phone_number" >Phone number:</label>
+    <input name="phone_number" id="phone_number" placeholder="Phone number" type="text" required>
+    <button type="submit">Add Instructor</button>
 </form>
-
-
 
 {% endblock content %}

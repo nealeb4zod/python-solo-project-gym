@@ -5,6 +5,34 @@
         <hgroup class='details-header'>
             <h3>Name: {{instructor.first_name}} {{instructor.last_name}}</h3>
         </hgroup>
+        <section class="details-body">
+            <hgroup>
+                <h4>
+                    Address: {{instructor.address}}
+                </h4>
+                <h4>
+                    Phone number: {{instructor.phone_number}}
+                </h4>
+                <h4>
+                    Date of Birth: {{instructor.date_of_birth.strftime("%d/%m/%Y")}}
+                </h4>
+            </hgroup>
+            <hr>
+            <h4>
+                Activities:
+            </h4>
+            <ul>
+            {% for activity in instructor.list_of_activities %}
+                <li>
+                    <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%I:%M %p")}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <hr>
+            <p>
+                <a class="card-btn" href="/instructors/{{instructor.id}}/edit">Edit Instructor details</i></a>
+            </p>
+        </section>
 
     </section>
 {% endblock content %}

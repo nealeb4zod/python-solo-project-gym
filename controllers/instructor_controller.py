@@ -4,6 +4,7 @@ from flask import Blueprint
 from models.instructor import Instructor
 
 import repositories.instructor_repository as instructor_repository
+import repositories.activity_repository as activity_repository
 
 instructors_blueprint = Blueprint("instructors", __name__)
 
@@ -18,9 +19,13 @@ def new_instructor():
 
 @instructors_blueprint.route("/instructors", methods=["POST"])
 def create_instructor():
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    date_of_birth = request.form["date_of_birth"]
+    phone_number = request.form["phone_number"]
+    address = request.form["address"]
 
-
-    new_instructor = Instructor()
+    new_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number)
     instructor_repository.new(new_instructor)
     return redirect("/instructors")
 
@@ -31,9 +36,15 @@ def edit_instructor(id):
 
 @instructors_blueprint.route("/instructors/<id>", methods=["POST"])
 def update_instructor(id):
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    date_of_birth = request.form["date_of_birth"]
+    phone_number = request.form["phone_number"]
+    address = request.form["address"]
 
-
-    updated_instructor = Instructor()
+    list_of_activities = activity_repository.instructor(id)
+    updated_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number, list_of_activities, id)
+    # import pdb; pdb.set_trace()
     instructor_repository.edit(updated_instructor)
     return redirect("/instructors")
 

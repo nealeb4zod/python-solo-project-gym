@@ -6,7 +6,7 @@ class Instructor:
         date_of_birth,
         address,
         phone_number,
-        list_of_activities,
+        list_of_activities=None,
         id=None,
     ):
         self.first_name = first_name

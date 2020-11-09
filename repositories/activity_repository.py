@@ -86,3 +86,9 @@ def edit(activity):
         activity.id,
     ]
     results = run_sql(sql, values)
+
+def instructor(instructor_id):
+    sql = "SELECT * FROM activities WHERE instructor = %s;"
+    value = ["id"]
+    results = run_sql(sql, value)
+    return results
