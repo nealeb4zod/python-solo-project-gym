@@ -48,7 +48,7 @@ def new(member):
 def get_all():
     members = []
 
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members ORDER BY last_name ASC"
     results = run_sql(sql)
 
     for row in results:
@@ -110,7 +110,7 @@ def delete_one(id):
 
 # UPDATE an member
 def edit(member):
-    sql = "UPDATE members SET (first_name = (%s), (last_name) = (%s), (address) = (%s), (phone_number) = (%s), (date_of_birth) = (%s),  (email_address) = (%s), (membership_type) = (%s), (start_date) = (%s), (active_membership) = (%s) WHERE id = %s;"
+    sql = "UPDATE members SET (first_name, last_name, date_of_birth, address, phone_number,  email_address, membership_type, start_date, active_membership) = (%s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s;"
     values = [
         member.first_name,
         member.last_name,
