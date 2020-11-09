@@ -1,18 +1,8 @@
 version: "3.7"
 
 services:
-    web:
-        build: .
-        ports:
-            - 5000:5000
-        env_file:
-            - ./.flaskenv
-        command: gym.py
-        volumes:
-            - ${PWD}:/app
-
     postgres:
-        image: postgres
+        image: postgres:12
         restart: always
         environment:
             - DATABASE_HOST=0.0.0.0
@@ -24,3 +14,13 @@ services:
             - "5432:5432"
         volumes:
             - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+            - ./postgres-data/postgres:/var/lib/postgresql/data
+    web:
+        build: .
+        ports:
+            - 5000:5000
+        env_file:
+            - ./.flaskenv
+        command: gym.py
+        volumes:
+            - ${PWD}:/app
