@@ -57,3 +57,17 @@ def delete_one(id):
     value = [id]
     results = run_sql(sql, value)
 
+
+def check_booking_exists(activity, member):
+    sql = "SELECT * FROM bookings WHERE activity = %s AND member = %s"
+    values = [activity, member]
+    results = run_sql(sql, values)
+    if len(results) == 0:
+        return False
+    else:
+        return True
+
+def delete_specific_booking(member, activity):
+    sql = "DELETE  FROM bookings WHERE member = %s and activity = %s"
+    values = [member, activity]
+    results = run_sql(sql, values)

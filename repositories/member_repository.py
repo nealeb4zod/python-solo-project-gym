@@ -8,7 +8,7 @@ import repositories.activity_repository as activity_repository
 def get_activities(user_id):
     activities = []
 
-    sql = "SELECT * FROM activities INNER JOIN bookings on activities.id = bookings.activity where bookings.member = %s"
+    sql = "SELECT activities.* FROM activities INNER JOIN bookings on activities.id = bookings.activity where bookings.member = %s"
     value = [user_id]
     results = run_sql(sql, value)
 

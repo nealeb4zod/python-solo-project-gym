@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<form class="form" action="/bookings" method="POST">
+<form class="form" action="/bookings/member" method="POST">
     <h1>New Booking</h1>
     <label for="member" >Member:</label>
-    <input name="member" id="member" type="text" value="{{member.first_name}} {{member.last_name}}" disabled>
+    <input name="member" id="member" type="hidden" value="{{ member.id }}" >
+    <h4>{{member.first_name}} {{member.last_name}}</h4>
     <label for="activity" >Activity:</label>
-    <select id="activity" name="member">
+    <select id="activity" name="activity">
         {% for activity in activities %}
             <option value="{{ activity.id }}">{{ activity.name }} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%X")}}</option>
         {% endfor %}

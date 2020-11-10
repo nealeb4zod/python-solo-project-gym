@@ -46,12 +46,17 @@
             {% for activity in booked_activities %}
                 <li>
                     <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%I:%M %p")}}</a>
+                    <a href="/bookings/delete/{{member.id}}/{{activity.id}}">Delete Booking</a>
                 </li>
             {% endfor %}
             </ul>
             <hr>
             <p>
                 <a class="card-btn" href="/members/{{member.id}}/edit">Edit member details</i></a>
+            </p>
+            <hr>
+            <p>
+                <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
             </p>
         </section>
     </section>
