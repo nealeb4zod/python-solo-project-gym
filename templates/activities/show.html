@@ -4,12 +4,12 @@
     <section class="show-details">
         <hgroup class='details-header'>
             <h3>Name: {{activity.name}}</h3>
+            <h4>
+                Instructor: <a href="/instructors/{{instructor.id}}">{{instructor.first_name}} {{instructor.last_name}}</a>
+            </h4>
         </hgroup>
         <section class="details-body">
             <hgroup>
-                <h4>
-                    Instructor: <a href="/instructors/{{instructor.id}}">{{instructor.first_name}} {{instructor.last_name}}</a>
-                </h4>
                 <h4>
                     Date: {{activity.date_time.strftime("%d/%m/%Y")}}
                 </h4>
@@ -42,7 +42,7 @@
                 {% endfor %}
             </ul>
             <hr>
-            <p>
+            <p id="list-links">
                 <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit Activity Details</i></a>
             </p>
         </section>

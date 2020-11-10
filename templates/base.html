@@ -5,15 +5,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='show.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
-    <!-- <script src="https://kit.fontawesome.com/3b9a04f840.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/3b9a04f840.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
     <title>{{ title }} || East Side Gym</title>
 </head>
 <body>
     <hgroup id="header">
-        <!-- <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo"> -->
+        <!-- <img id="logo" src="{{url_for('static', filename='images/logo2.png')}}" alt="Kettlebell, barbell logo"> -->
+        <i class="fas fa-dumbbell"></i>
         <span>East Side Gym</span>
-        <!-- <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo"> -->
+        <i class="fas fa-dumbbell"></i>
+        <!-- <img id="logo" src="{{url_for('static', filename='images/logo2.png')}}" alt="Kettlebell, barbell logo"> -->
     </hgroup>
     <nav class="navbar">
         <a id="home" href="/">Home</a>
@@ -44,16 +46,6 @@
                 <a href="/instructors/new">Add an Instructor</a>
             </div>
         </div>
-        <div class="dropdown">
-            <button class="dropbtn">Bookings
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/bookings">View all Bookings</a>
-                <a href="/bookings/new">Make a Booking</a>
-            </div>
-        </div>
-
     </nav>
     {% block content %}
     {% endblock %}

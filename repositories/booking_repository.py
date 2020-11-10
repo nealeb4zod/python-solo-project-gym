@@ -57,13 +57,3 @@ def delete_one(id):
     value = [id]
     results = run_sql(sql, value)
 
-
-# UPDATE an booking
-def edit(booking):
-    sql = "UPDATE bookings SET (activity, member) = (%s, %s) WHERE id = %s;"
-    values = [
-        booking.activity,
-        booking.member,
-        booking.id,
-    ]
-    results = run_sql(sql, values)

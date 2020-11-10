@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="form" action="/bookings" method="POST">
+    <h1>New Booking</h1>
+    <label for="member" >Member:</label>
+    <input name="member" id="member" type="text" value="{{member.first_name}} {{member.last_name}}" disabled>
+    <label for="activity" >Activity:</label>
+    <select id="activity" name="member">
+        {% for activity in activities %}
+            <option value="{{ activity.id }}">{{ activity.name }} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%X")}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Add Booking</button>
+</form>
+
+{% endblock content %}

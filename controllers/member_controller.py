@@ -53,7 +53,6 @@ def update_member(id):
     start_date = request.form["start_date"]
     active_membership = request.form["active_membership"]
 
-
     membership_type = membership_type_repository.get_one(membership_type_id)
     updated_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership, id)
     member_repository.edit(updated_member)

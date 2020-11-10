@@ -23,7 +23,6 @@ instructor_1 = Instructor(
     '1999-08-13',
     '59 Avenue Avenue, Cowdenbeath, KY7 0GE',
     '0777666543',
-    [],
 )
 
 instructor_2 = Instructor(
@@ -32,7 +31,6 @@ instructor_2 = Instructor(
     '1972-04-26',
     '59 Street Road, Borughty Ferry, DD7 1TY',
     '0777666999',
-    [],
 )
 
 instructor_repository.new(instructor_1)
@@ -55,7 +53,6 @@ member_1 = Member(
     premium,
     '2020-03-03',
     True,
-    [],
 )
 member_2 = Member(
     'Scott',
@@ -67,15 +64,14 @@ member_2 = Member(
     basic,
     '2020-04-01',
     True,
-    [],
 )
 
 member_list = []
 member_repository.new(member_1)
 member_repository.new(member_2)
 
-activity_1 = Activity("Yoga", instructor_2, "2020-11-13 13:00:00", 60, 20, [member_list], premium)
-activity_2 = Activity("Pilates", instructor_2, "2020-11-14 12:00:00", 60, 20, [member_list], basic)
+activity_1 = Activity("Yoga", instructor_2, "2020-11-13 13:00:00", 60, 20, premium)
+activity_2 = Activity("Pilates", instructor_2, "2020-11-14 12:00:00", 60, 20, basic)
 
 activity_repository.new(activity_1)
 activity_repository.new(activity_2)

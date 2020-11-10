@@ -20,6 +20,7 @@
 .details-body {
     color: #58595b;
 }
-.details-body a {
-    color: #c7c7c7;
+
+.details-body > ul > li > a {
+    color: #58595b;
 }
