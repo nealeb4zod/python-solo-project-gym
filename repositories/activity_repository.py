@@ -110,7 +110,7 @@ def get_all_inactive():
 
 # SELECT an activity
 def get_one(id):
-    sql = "SELECT * FROM activities WHERE id = %s"
+    sql = "SELECT * FROM activities WHERE active = true AND id = %s"
     value = [id]
     result = run_sql(sql, value)[0]
 

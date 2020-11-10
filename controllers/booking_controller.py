@@ -49,7 +49,7 @@ def create_booking_from_member():
     member_membership_type = membership_type_repository.get_one(member.membership_type)
     activity_membership_type = membership_type_repository.get_one(activity.membership_type)
     current_bookings = len(activity_repository.get_members(activity_id))
-    activities = activity_repository.get_all()
+    activities = activity_repository.get_all_active()
     # import pdb; pdb.set_trace()
     if booking_repository.check_booking_exists(activity_id, member_id) == True:
         error = "Already booked!"
