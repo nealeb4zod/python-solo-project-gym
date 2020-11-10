@@ -13,7 +13,12 @@ activities_blueprint = Blueprint("activities", __name__)
 
 @activities_blueprint.route("/activities")
 def activities():
-    activities = activity_repository.get_all()
+    activities = activity_repository.get_all_active()
+    return render_template("activities/index.html", activities=activities, title="Activities")
+
+@activities_blueprint.route("/activities/inactive")
+def inactive_activities():
+    activities = activity_repository.get_all_inactive()
     return render_template("activities/index.html", activities=activities, title="Activities")
 
 @activities_blueprint.route("/activities/new")
@@ -31,13 +36,14 @@ def create_activity():
     duration = request.form["duration"]
     capacity = request.form["capacity"]
     membership_type_id = request.form["membership_type"]
+    active = request.form["active"]
 
     datetime = date + " " + time
     date_time = parse(datetime,fuzzy=True)
 
     membership_type = membership_type_repository.get_one(membership_type_id)
     instructor = instructor_repository.get_one(instructor_id)
-    new_activity = Activity(name, instructor, date_time, duration, capacity, membership_type)
+    new_activity = Activity(name, instructor, date_time, duration, capacity, membership_type, active)
     activity_repository.new(new_activity)
     return redirect("/activities")
 
@@ -59,6 +65,7 @@ def update_activity(id):
     duration = request.form["duration"]
     capacity = request.form["capacity"]
     membership_type_id = request.form["membership_type"]
+    active = request.form["active"]
 
     datetime = date + " " + time
     date_time = parse(datetime,fuzzy=True)
@@ -66,7 +73,7 @@ def update_activity(id):
     membership_type = membership_type_repository.get_one(membership_type_id)
     instructor = instructor_repository.get_one(instructor_id)
 
-    updated_activity = Activity(name, instructor, date_time, duration, capacity, membership_type, id)
+    updated_activity = Activity(name, instructor, date_time, duration, capacity, membership_type, active, id)
     activity_repository.edit(updated_activity)
     return redirect("/activities")
 

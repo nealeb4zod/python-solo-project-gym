@@ -28,6 +28,14 @@
                 <h4>
                     Membership Type: {{membership_type.type}}
                 </h4>
+                <h4>
+                    Active:
+                    {% if  activity.active == True%}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </h4>
 
             </hgroup>
             <hr>
@@ -38,12 +46,17 @@
                 {% for member in activity_members %}
                 <li>
                     <a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}}</a>
+                    <a href="/bookings/delete/activity/{{member.id}}/{{activity.id}}"> - Remove Member</a>
                 </li>
                 {% endfor %}
             </ul>
             <hr>
             <p id="list-links">
                 <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit Activity Details</i></a>
+            </p>
+            <hr>
+            <p>
+                <a class="card-btn" href="/bookings/new/activity/{{activity.id}}">Make a Booking</a>
             </p>
         </section>
 

@@ -39,7 +39,8 @@ CREATE TABLE activities (
     date_time TIMESTAMP NOT NULL,
     duration INT NOT NULL,
     capacity INT NOT NULL,
-    membership_type INT REFERENCES membership_types(id)
+    membership_type INT REFERENCES membership_types(id),
+    active BOOLEAN NOT NULL
 );
 
 CREATE TABLE bookings (

@@ -7,6 +7,7 @@ class Activity:
         duration,
         capacity,
         membership_type,
+        active,
         id = None,
     ):
         self.id = id
@@ -16,3 +17,4 @@ class Activity:
         self.duration = duration
         self.capacity = capacity
         self.membership_type = membership_type
+        self.active = active

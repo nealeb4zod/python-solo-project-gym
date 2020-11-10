@@ -4,6 +4,7 @@
 
 <form class="form" action="/bookings/member" method="POST">
     <h1>New Booking</h1>
+    <span class="error">{{error}}</span>
     <label for="member" >Member:</label>
     <input name="member" id="member" type="hidden" value="{{ member.id }}" >
     <h4>{{member.first_name}} {{member.last_name}}</h4>

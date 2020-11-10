@@ -20,6 +20,7 @@ def get_activities(user_id):
             row["duration"],
             row["capacity"],
             row["membership_type"],
+            row["active"],
             row["id"],
         )
         activities.append(activity)
@@ -49,6 +50,50 @@ def get_all():
     members = []
 
     sql = "SELECT * FROM members ORDER BY last_name ASC"
+    results = run_sql(sql)
+
+    for row in results:
+        member = Member(
+            row["first_name"],
+            row["last_name"],
+            row["date_of_birth"],
+            row["address"],
+            row["phone_number"],
+            row["email_address"],
+            row["membership_type"],
+            row["start_date"],
+            row["active_membership"],
+            row["id"]
+        )
+        members.append(member)
+
+    return members
+def get_all_active():
+    members = []
+
+    sql = "SELECT * FROM members where active_membership = true ORDER BY last_name ASC"
+    results = run_sql(sql)
+
+    for row in results:
+        member = Member(
+            row["first_name"],
+            row["last_name"],
+            row["date_of_birth"],
+            row["address"],
+            row["phone_number"],
+            row["email_address"],
+            row["membership_type"],
+            row["start_date"],
+            row["active_membership"],
+            row["id"]
+        )
+        members.append(member)
+
+    return members
+def get_all_inactive():
+    members = []
+
+    sql = "SELECT * FROM members where active_membership = false ORDER BY last_name ASC"
     results = run_sql(sql)
 
     for row in results:

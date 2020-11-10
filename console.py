@@ -70,8 +70,8 @@ member_list = []
 member_repository.new(member_1)
 member_repository.new(member_2)
 
-activity_1 = Activity("Yoga", instructor_2, "2020-11-13 13:00:00", 60, 20, premium)
-activity_2 = Activity("Pilates", instructor_2, "2020-11-14 12:00:00", 60, 20, basic)
+activity_1 = Activity("Yoga", instructor_2, "2020-11-13 13:00:00", 60, 20, premium, True)
+activity_2 = Activity("Pilates", instructor_2, "2020-11-14 12:00:00", 60, 20, basic, True)
 
 activity_repository.new(activity_1)
 activity_repository.new(activity_2)

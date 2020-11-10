@@ -37,9 +37,10 @@ class TestInstructor(unittest.TestCase):
             60,
             20,
             self.premium,
+            True,
         )
         self.activity_2 = Activity(
-            "Pilates", self.instructor_1, "2020-11-14 12:00:00", 60, 20, self.basic
+            "Pilates", self.instructor_1, "2020-11-14 12:00:00", 60, 20, self.basic, True,
         )
         self.activity_list = [self.activity_1, self.activity_2]
 

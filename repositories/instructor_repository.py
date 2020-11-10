@@ -22,6 +22,7 @@ def get_activities(instructor_id):
             row["duration"],
             row["capacity"],
             row["membership_type"],
+            row["active"],
             row["id"],
         )
         activities.append(activity)

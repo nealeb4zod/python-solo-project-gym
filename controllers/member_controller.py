@@ -10,7 +10,12 @@ members_blueprint = Blueprint("members", __name__)
 
 @members_blueprint.route("/members")
 def members():
-    members = member_repository.get_all()
+    members = member_repository.get_all_active()
+    return render_template("members/index.html", members=members, title="Members")
+
+@members_blueprint.route("/members/inactive")
+def inactive_members():
+    members = member_repository.get_all_inactive()
     return render_template("members/index.html", members=members, title="Members")
 
 @members_blueprint.route("/members/new")

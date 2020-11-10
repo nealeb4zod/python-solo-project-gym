@@ -86,3 +86,8 @@ form > label {
     background-size: 200px 100%;
     background-repeat: no-repeat;
 }
+
+.error {
+    margin: 25px;
+    color: red;
+}

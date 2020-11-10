@@ -49,16 +49,17 @@ def create_booking_from_member():
     member_membership_type = membership_type_repository.get_one(member.membership_type)
     activity_membership_type = membership_type_repository.get_one(activity.membership_type)
     current_bookings = len(activity_repository.get_members(activity_id))
+    activities = activity_repository.get_all()
     # import pdb; pdb.set_trace()
     if booking_repository.check_booking_exists(activity_id, member_id) == True:
-
-# https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/
-
-        return "Already booked"
+        error = "Already booked!"
+        return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)
     elif member_membership_type.type == "Basic" and activity_membership_type.type == "Premium":
-        return "No basics!"
+        error = "No basics!"
+        return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)
     elif current_bookings >= activity.capacity:
-        return "Full!"
+        error = "Activity Full!"
+        return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)
     else:
         new_booking = Booking( activity, member )
         booking_repository.new(new_booking)
@@ -70,8 +71,14 @@ def delete_booking(id):
     booking_repository.delete_one(id)
     return redirect("/bookings")
 
-@bookings_blueprint.route("/bookings/delete/<member_id>/<activity_id>")
-def delete_specific_booking(member_id,activity_id):
+@bookings_blueprint.route("/bookings/delete/member/<member_id>/<activity_id>")
+def delete_specific_booking_member(member_id,activity_id):
     booking_repository.delete_specific_booking(member_id,activity_id)
     member_page = "/members/" + member_id
     return redirect (member_page)
+
+@bookings_blueprint.route("/bookings/delete/activity/<member_id>/<activity_id>")
+def delete_specific_booking_activity(member_id,activity_id):
+    booking_repository.delete_specific_booking(member_id,activity_id)
+    activity_page = "/activities/" + activity_id
+    return redirect (activity_page)
