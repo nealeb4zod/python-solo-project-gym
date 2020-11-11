@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6540b1edef954223a6bf9c8ae9c75795)](https://app.codacy.com/gh/nealeb4zod/python-solo-project-gym?utm_source=github.com&utm_medium=referral&utm_content=nealeb4zod/python-solo-project-gym&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.com/nealeb4zod/python-solo-project-gym.svg?branch=main)](https://travis-ci.com/nealeb4zod/python-solo-project-gym)
 
 # python-solo-project-gym
