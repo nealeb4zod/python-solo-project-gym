@@ -28,7 +28,6 @@ class TestMember(unittest.TestCase):
         self.activity_2 = Activity(
             "Pilates", self.instructor_1, "2020-11-14 12:00:00", 60, 20, self.premium, True,
         )
-        activities_list = [self.activity_1, self.activity_2]
         self.member_1 = Member(
             "Alan",
             "Johnston",

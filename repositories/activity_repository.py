@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 
 from models.activity import Activity
 from models.member import Member
-import repositories.member_repository as member_repository
+
 
 
 def get_members(id):
@@ -131,14 +131,14 @@ def get_one(id):
 # DELETE all activities
 def delete_all():
     sql = "DELETE FROM public.activities"
-    results = run_sql(sql)
+    run_sql(sql)
 
 
 # DELETE an activity
 def delete_one(id):
     sql = "DELETE  FROM activities WHERE id = %s"
     value = [id]
-    results = run_sql(sql, value)
+    run_sql(sql, value)
 
 
 # UPDATE an activity
@@ -154,4 +154,4 @@ def edit(activity):
         activity.active,
         activity.id,
     ]
-    results = run_sql(sql, values)
+    run_sql(sql, values)

@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect
+from flask import  render_template, request, redirect
 from flask import Blueprint
 
-from dateutil.parser import *
+from dateutil.parser import parse
 
 from models.activity import Activity
 
@@ -12,7 +12,7 @@ import repositories.membership_type_repository as membership_type_repository
 activities_blueprint = Blueprint("activities", __name__)
 
 @activities_blueprint.route("/activities")
-def activities():
+def activities_index():
     activities = activity_repository.get_all_active()
     return render_template("activities/index.html", activities=activities, title="Activities")
 
@@ -22,7 +22,7 @@ def inactive_activities():
     return render_template("activities/index.html", activities=activities, title="Activities")
 
 @activities_blueprint.route("/activities/new")
-def new_activity():
+def new_activity_form():
     instructors = instructor_repository.get_all()
     membership_types = membership_type_repository.get_all()
     return render_template("activities/new.html", instructors=instructors, membership_types=membership_types, title="New Activity")

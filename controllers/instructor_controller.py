@@ -1,20 +1,20 @@
-from flask import Flask, render_template, request, redirect
+from flask import render_template, request, redirect
 from flask import Blueprint
 
 from models.instructor import Instructor
 
 import repositories.instructor_repository as instructor_repository
-import repositories.activity_repository as activity_repository
+
 
 instructors_blueprint = Blueprint("instructors", __name__)
 
 @instructors_blueprint.route("/instructors")
-def instructors():
+def instructors_index():
     instructors = instructor_repository.get_all()
     return render_template("instructors/index.html", instructors=instructors, title="Instructors")
 
 @instructors_blueprint.route("/instructors/new")
-def new_instructor():
+def new_instructor_form():
     return render_template("instructors/new.html", title="New Instructor")
 
 @instructors_blueprint.route("/instructors", methods=["POST"])

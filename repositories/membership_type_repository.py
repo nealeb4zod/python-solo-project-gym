@@ -48,14 +48,14 @@ def get_one(id):
 # DELETE all membership_types
 def delete_all():
     sql = "DELETE FROM public.membership_types"
-    results = run_sql(sql)
+    run_sql(sql)
 
 
 # DELETE an membership_type
 def delete_one(id):
     sql = "DELETE  FROM membership_types WHERE id = %s"
     value = [id]
-    results = run_sql(sql, value)
+    run_sql(sql, value)
 
 
 # UPDATE an membership_type
@@ -65,4 +65,4 @@ def edit(membership_type):
         membership_type.type,
         membership_type.id,
     ]
-    results = run_sql(sql, values)
+    run_sql(sql, values)

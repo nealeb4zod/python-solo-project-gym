@@ -48,14 +48,14 @@ def get_one(id):
 # DELETE all bookings
 def delete_all():
     sql = "DELETE FROM public.bookings"
-    results = run_sql(sql)
+    run_sql(sql)
 
 
 # DELETE an booking
 def delete_one(id):
     sql = "DELETE  FROM bookings WHERE id = %s"
     value = [id]
-    results = run_sql(sql, value)
+    run_sql(sql, value)
 
 
 def check_booking_exists(activity, member):
@@ -70,4 +70,4 @@ def check_booking_exists(activity, member):
 def delete_specific_booking(member, activity):
     sql = "DELETE  FROM bookings WHERE member = %s and activity = %s"
     values = [member, activity]
-    results = run_sql(sql, values)
+    run_sql(sql, values)

@@ -3,8 +3,6 @@ from db.run_sql import run_sql
 from models.instructor import Instructor
 from models.activity import Activity
 
-import repositories.activity_repository as activity_repository
-
 # CREATE instructor
 
 def get_activities(instructor_id):
@@ -84,14 +82,14 @@ def get_one(id):
 # DELETE all instructors
 def delete_all():
     sql = "DELETE FROM public.instructors"
-    results = run_sql(sql)
+    run_sql(sql)
 
 
 # DELETE an instructor
 def delete_one(id):
     sql = "DELETE  FROM instructors WHERE id = %s"
     value = [id]
-    results = run_sql(sql, value)
+    run_sql(sql, value)
 
 
 # UPDATE an instructor
@@ -105,4 +103,4 @@ def edit(instructor):
         instructor.date_of_birth,
         instructor.id,
     ]
-    results = run_sql(sql, values)
+    run_sql(sql, values)
