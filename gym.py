@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import os
 
 from controllers.member_controller import members_blueprint
 from controllers.instructor_controller import instructors_blueprint

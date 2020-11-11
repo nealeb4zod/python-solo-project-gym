@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect
 from flask import Blueprint
 
 from models.booking import Booking

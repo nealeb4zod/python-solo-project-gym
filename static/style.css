@@ -35,6 +35,10 @@ body {
   border: 1px solid black;
 }
 
+a {
+  color: #c7c7c7;
+}
+ß
 .navbar a {
   float: left;
   font-size: 16px;
@@ -68,10 +72,6 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #c7c7c7;
-}
-
-a {
   color: #c7c7c7;
 }
 

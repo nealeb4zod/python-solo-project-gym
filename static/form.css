@@ -46,8 +46,7 @@ select {
   background-repeat: no-repeat;
 }
 
-form > input:valid,
-input:focus {
+form > input:focus, input:valid {
   box-shadow: none;
   outline: none;
   background-position: 0 0;
