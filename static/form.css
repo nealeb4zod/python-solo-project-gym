@@ -45,8 +45,9 @@ select {
   background-size: 200px 100%;
   background-repeat: no-repeat;
 }
-form > input:focus,
-input:valid {
+
+form > input:valid,
+input:focus {
   box-shadow: none;
   outline: none;
   background-position: 0 0;
@@ -75,7 +76,6 @@ form > label {
   display: block;
   border: none;
   padding: 10px 0;
-  /* border-bottom: solid 1px #054c36; */
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   background: linear-gradient(
     to bottom,

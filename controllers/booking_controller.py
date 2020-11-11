@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for
 from flask import Blueprint
 
 from models.booking import Booking
@@ -12,7 +12,7 @@ import repositories.membership_type_repository as membership_type_repository
 bookings_blueprint = Blueprint("bookings", __name__)
 
 @bookings_blueprint.route("/bookings")
-def bookings():
+def bookings_index():
     bookings = booking_repository.get_all()
     return render_template("bookings/index.html", bookings=bookings, title="Bookings")
 
