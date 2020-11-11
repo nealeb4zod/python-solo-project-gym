@@ -75,11 +75,11 @@
   padding: 5px;
   border: 1px solid #58595b;
   border-radius: 5px;
-  background-color: #d1bab4
+  background-color: #d1bab4;
 }
 
 .del-btn:hover {
-  background-color: #ddc5bf
+  background-color: #ddc5bf;
 }
 
 .card-btn:hover {
