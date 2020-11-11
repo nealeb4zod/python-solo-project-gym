@@ -7,7 +7,7 @@ def run_sql(sql, values=None):
     results = []
 
     try:
-        conn = psycopg2.connect("dbname='gym'")
+        conn = psycopg2.connect("passfile=.pgpass user=doadmin host=db-postgresql-lon1-07772-do-user-8246268-0.b.db.ondigitalocean.com port=25060 dbname=gym sslmode=require")
         cur = conn.cursor(cursor_factory=ext.DictCursor)
         cur.execute(sql, values)
         conn.commit()
