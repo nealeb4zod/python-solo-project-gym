@@ -1,63 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="show-details">
-        <hgroup class='details-header'>
-            <h3>Name: {{member.first_name}} {{member.last_name}}</h3>
-            <h3>Member No: {{member.id}}</h3>
-        </hgroup>
-        <section class="details-body">
-            <hgroup>
-                <h4>
-                    Address: {{member.address}}
-                </h4>
-                <h4>
-                    Phone number: {{member.phone_number}}
-                </h4>
-                <h4>
-                    Email: {{member.email_address}}
-                </h4>
-                <h4>
-                    Date of Birth: {{member.date_of_birth.strftime("%d/%m/%Y")}}
-                </h4>
-            </hgroup>
-            <hr>
-            <hgroup>
-                <h4>
-                    Membership Type: {{membership_type.type}}
-                </h4>
-                <h4>
-                    Start date: {{member.start_date.strftime("%d/%m/%Y")}}
-                </h4>
-                <h4>
-                    Membership Status:
-                    {% if  member.active_membership == True%}
-                        Active
-                    {% else %}
-                        Expired
-                    {% endif %}
-                </h4>
-            </hgroup>
-            <hr>
-            <h4>
-                Booked Activities:
-            </h4>
-            <ul>
-            {% for activity in booked_activities %}
-                <li>
-                    <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} - {{activity.date_time.strftime("%I:%M %p")}}</a>
-                    <a href="/bookings/delete/members/{{member.id}}/{{activity.id}}">Delete Booking</a>
-                </li>
-            {% endfor %}
-            </ul>
-            <hr>
-            <p>
-                <a class="card-btn" href="/members/{{member.id}}/edit">Edit member details</i></a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
-            </p>
-        </section>
-    </section>
+<section class="show-details">
+  <hgroup class='details-header'>
+    <h3>Name: {{member.first_name}} {{member.last_name}}</h3>
+    <h3>Member No: {{member.id}}</h3>
+  </hgroup>
+  <section class="details-body">
+    <hgroup>
+      <h4>
+        Address: {{member.address}}
+      </h4>
+      <h4>
+        Phone number: {{member.phone_number}}
+      </h4>
+      <h4>
+        Email: {{member.email_address}}
+      </h4>
+      <h4>
+        Date of Birth: {{member.date_of_birth.strftime("%d/%m/%Y")}}
+      </h4>
+    </hgroup>
+    <hr>
+    <hgroup>
+      <h4>
+        Membership Type: {{membership_type.type}}
+      </h4>
+      <h4>
+        Start date: {{member.start_date.strftime("%d/%m/%Y")}}
+      </h4>
+      <h4>
+        Membership Status:
+        {% if  member.active_membership == True%}
+        Active
+        {% else %}
+        Expired
+        {% endif %}
+      </h4>
+    </hgroup>
+    <hr>
+    <h4>
+      Booked Activities:
+    </h4>
+    <ul>
+      {% for activity in booked_activities %}
+      <li>
+        <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} -
+          {{activity.date_time.strftime("%I:%M %p")}}</a>
+        <a class="del-btn" href="/bookings/delete/members/{{member.id}}/{{activity.id}}">Delete Booking</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <hr>
+    <p>
+      <a class="card-btn" href="/members/{{member.id}}/edit">Edit member details</i></a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
+    </p>
+  </section>
+</section>
 {% endblock content %}

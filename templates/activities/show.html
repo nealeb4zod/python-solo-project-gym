@@ -1,64 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="show-details">
-        <hgroup class='details-header'>
-            <h3>Name: {{activity.name}}</h3>
-            <h4>
-                Instructor: <a href="/instructors/{{instructor.id}}">{{instructor.first_name}} {{instructor.last_name}}</a>
-            </h4>
-        </hgroup>
-        <section class="details-body">
-            <hgroup>
-                <h4>
-                    Date: {{activity.date_time.strftime("%d/%m/%Y")}}
-                </h4>
-                <h4>
-                    Time: {{activity.date_time.strftime("%X")}}
-                </h4>
-                <h4>
-                    Duration: {{activity.duration}}
-                </h4>
-                <h4>
-                    Capacity: {{activity.capacity}}
-                </h4>
-                <h4>
-                    No. members booked for activity: {{no_members_booked}}
-                </h4>
-                <h4>
-                    Membership Type: {{membership_type.type}}
-                </h4>
-                <h4>
-                    Active:
-                    {% if  activity.active == True%}
-                        Yes
-                    {% else %}
-                        No
-                    {% endif %}
-                </h4>
+<section class="show-details">
+  <hgroup class='details-header'>
+    <h3>Name: {{activity.name}}</h3>
+    <h4>
+      Instructor: <a href="/instructors/{{instructor.id}}">{{instructor.first_name}} {{instructor.last_name}}</a>
+    </h4>
+  </hgroup>
+  <section class="details-body">
+    <hgroup>
+      <h4>
+        Date: {{activity.date_time.strftime("%d/%m/%Y")}}
+      </h4>
+      <h4>
+        Time: {{activity.date_time.strftime("%X")}}
+      </h4>
+      <h4>
+        Duration: {{activity.duration}}
+      </h4>
+      <h4>
+        Capacity: {{activity.capacity}}
+      </h4>
+      <h4>
+        No. members booked for activity: {{no_members_booked}}
+      </h4>
+      <h4>
+        Membership Type: {{membership_type.type}}
+      </h4>
+      <h4>
+        Active:
+        {% if  activity.active == True%}
+        Yes
+        {% else %}
+        No
+        {% endif %}
+      </h4>
 
-            </hgroup>
-            <hr>
-            <h4>
-                Booked Members:
-            </h4>
-            <ul>
-                {% for member in activity_members %}
-                <li>
-                    <a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}}</a>
-                    <a href="/bookings/delete/activity/{{member.id}}/{{activity.id}}"> - Remove Member</a>
-                </li>
-                {% endfor %}
-            </ul>
-            <hr>
-            <p id="list-links">
-                <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit Activity Details</i></a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/bookings/new/activity/{{activity.id}}">Make a Booking</a>
-            </p>
-        </section>
+    </hgroup>
+    <hr>
+    <h4>
+      Booked Members:
+    </h4>
+    <ul>
+      {% for member in activity_members %}
+      <li>
+        <a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}}</a>
+        <a class="del-btn" href="/bookings/delete/activity/{{member.id}}/{{activity.id}}">Remove Member</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <hr>
+    <p id="list-links">
+      <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit Activity Details</i></a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/bookings/new/activity/{{activity.id}}">Make a Booking</a>
+    </p>
+  </section>
 
-    </section>
+</section>
 {% endblock content %}

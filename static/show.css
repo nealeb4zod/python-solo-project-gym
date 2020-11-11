@@ -24,3 +24,7 @@
 .details-body > ul > li > a {
   color: #58595b;
 }
+
+.details-body > ul > li {
+  padding: 10px;
+}
