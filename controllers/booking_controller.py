@@ -16,13 +16,13 @@ def bookings_index():
 @bookings_blueprint.route("/bookings/new/member/<id>")
 def new_member_booking(id):
     member = member_repository.get_one(id)
-    activities = activity_repository.get_all()
+    activities = activity_repository.get_all_active()
     return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking")
 
 @bookings_blueprint.route("/bookings/new/activity/<id>")
 def new_activity_booking(id):
     activity = activity_repository.get_one(id)
-    members = member_repository.get_all()
+    members = member_repository.get_all_active()
     return render_template("bookings/new-activity.html", activity=activity, members=members, title="New Booking")
 
 @bookings_blueprint.route("/bookings/activity", methods=["POST"])
@@ -31,11 +31,24 @@ def create_booking_from_activity():
     member_id = request.form["member"]
     activity = activity_repository.get_one(activity_id)
     member = member_repository.get_one(member_id)
-
-    new_booking = Booking( activity, member )
-    booking_repository.new(new_booking)
-    activity_page = "/activities/" + activity_id
-    return redirect (activity_page)
+    member_membership_type = membership_type_repository.get_one(member.membership_type)
+    activity_membership_type = membership_type_repository.get_one(activity.membership_type)
+    current_bookings = len(activity_repository.get_members(activity_id))
+    activities = activity_repository.get_all_active()
+    if booking_repository.check_booking_exists(activity_id, member_id) == True:
+        error = "Already booked!"
+        return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)
+    elif member_membership_type.type == "Basic" and activity_membership_type.type == "Premium":
+        error = "No basics!"
+        return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)
+    elif current_bookings >= activity.capacity:
+        error = "Activity Full!"
+        return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)
+    else:
+      new_booking = Booking( activity, member )
+      booking_repository.new(new_booking)
+      activity_page = "/activities/" + activity_id
+      return redirect (activity_page)
 
 @bookings_blueprint.route("/bookings/member", methods=["POST"])
 def create_booking_from_member():

@@ -11,10 +11,8 @@
   <label for="activity">Activity:</label>
   <select id="activity" name="activity">
     {% for activity in activities %}
-    {% if member.membership_type == activity.membership_type %}
     <option value="{{ activity.id }}">{{ activity.name }} - {{activity.date_time.strftime("%d/%m/%Y")}} -
       {{activity.date_time.strftime("%X")}}</option>
-    {% endif %}
     {% endfor %}
   </select>
   <button type="submit">Add Booking</button>
