@@ -5,6 +5,7 @@
   color: #58595b;
   font-family: "Josefin Sans", sans-serif;
 }
+
 .flexcards-home {
   display: flex;
   flex-flow: row wrap;
@@ -13,6 +14,7 @@
   font-family: "Josefin Sans", sans-serif;
   justify-content: space-between;
 }
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -32,7 +34,6 @@
 .card-home {
   display: flex;
   flex-direction: column;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
@@ -57,10 +58,7 @@
   height: auto;
   padding: 20px;
 }
-#name {
-}
-#mem-no {
-}
+
 .card-btn {
   color: #c7c7c7;
   border: 1px solid #58595b;
@@ -78,9 +76,11 @@
   border-radius: 5px;
   padding: 8px;
 }
+
 a {
   text-decoration: none;
 }
+
 .add-card {
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
