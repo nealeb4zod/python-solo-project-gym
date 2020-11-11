@@ -1,8 +1,6 @@
 from db.run_sql import run_sql
-
 from models.activity import Activity
 from models.member import Member
-
 
 
 def get_members(id):
@@ -28,8 +26,6 @@ def get_members(id):
         members.append(member)
     return members
 
-
-# CREATE activity
 def new(activity):
     sql = "INSERT INTO activities( name, instructor, date_time, duration, capacity, membership_type, active ) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *;"
     values = [
@@ -45,8 +41,6 @@ def new(activity):
     activity.id = results[0]["id"]
     return activity
 
-
-# SELECT all activities
 def get_all():
     activities = []
 
@@ -107,8 +101,6 @@ def get_all_inactive():
         activities.append(activity)
     return activities
 
-
-# SELECT an activity
 def get_one(id):
     sql = "SELECT * FROM activities WHERE active = true AND id = %s"
     value = [id]
@@ -127,21 +119,15 @@ def get_one(id):
         )
     return activity
 
-
-# DELETE all activities
 def delete_all():
     sql = "DELETE FROM public.activities"
     run_sql(sql)
 
-
-# DELETE an activity
 def delete_one(id):
     sql = "DELETE  FROM activities WHERE id = %s"
     value = [id]
     run_sql(sql, value)
 
-
-# UPDATE an activity
 def edit(activity):
     sql = "UPDATE activities SET (name, instructor, date_time, duration, capacity, membership_type, active) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s;"
     values = [

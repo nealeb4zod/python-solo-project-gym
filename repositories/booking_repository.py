@@ -1,8 +1,5 @@
 from db.run_sql import run_sql
-
 from models.booking import Booking
-
-# CREATE booking
 
 
 def new(booking):
@@ -12,8 +9,6 @@ def new(booking):
     booking.id = results[0]["id"]
     return booking
 
-
-# SELECT all bookings
 def get_all():
     bookings = []
 
@@ -29,8 +24,6 @@ def get_all():
         bookings.append(booking)
     return bookings
 
-
-# SELECT an booking
 def get_one(id):
     sql = "SELECT * FROM bookings WHERE id = %s"
     value = [id]
@@ -44,19 +37,15 @@ def get_one(id):
         )
     return booking
 
-
-# DELETE all bookings
 def delete_all():
     sql = "DELETE FROM public.bookings"
     run_sql(sql)
 
 
-# DELETE an booking
 def delete_one(id):
     sql = "DELETE  FROM bookings WHERE id = %s"
     value = [id]
     run_sql(sql, value)
-
 
 def check_booking_exists(activity, member):
     sql = "SELECT * FROM bookings WHERE activity = %s AND member = %s"

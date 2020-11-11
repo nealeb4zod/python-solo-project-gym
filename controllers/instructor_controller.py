@@ -1,10 +1,7 @@
 from flask import render_template, request, redirect
 from flask import Blueprint
-
 from models.instructor import Instructor
-
 import repositories.instructor_repository as instructor_repository
-
 
 instructors_blueprint = Blueprint("instructors", __name__)
 
@@ -24,7 +21,6 @@ def create_instructor():
     date_of_birth = request.form["date_of_birth"]
     phone_number = request.form["phone_number"]
     address = request.form["address"]
-
     new_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number)
     instructor_repository.new(new_instructor)
     return redirect("/instructors")
@@ -41,7 +37,6 @@ def update_instructor(id):
     date_of_birth = request.form["date_of_birth"]
     phone_number = request.form["phone_number"]
     address = request.form["address"]
-
     updated_instructor = Instructor(first_name, last_name, date_of_birth, address, phone_number, id)
     instructor_repository.edit(updated_instructor)
     return redirect("/instructors")

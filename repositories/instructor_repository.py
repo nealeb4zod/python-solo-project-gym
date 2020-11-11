@@ -3,7 +3,6 @@ from db.run_sql import run_sql
 from models.instructor import Instructor
 from models.activity import Activity
 
-# CREATE instructor
 
 def get_activities(instructor_id):
     activities = []
@@ -26,7 +25,6 @@ def get_activities(instructor_id):
         activities.append(activity)
     return activities
 
-
 def new(instructor):
     sql = "INSERT INTO instructors( first_name, last_name, date_of_birth, address, phone_number ) VALUES ( %s, %s, %s, %s, %s ) RETURNING *;"
     values = [
@@ -40,8 +38,6 @@ def new(instructor):
     instructor.id = results[0]["id"]
     return instructor
 
-
-# SELECT all instructors
 def get_all():
     instructors = []
 
@@ -60,8 +56,6 @@ def get_all():
         instructors.append(instructor)
     return instructors
 
-
-# SELECT an instructor
 def get_one(id):
     sql = "SELECT * FROM instructors WHERE id = %s"
     value = [id]
@@ -78,21 +72,15 @@ def get_one(id):
         )
     return instructor
 
-
-# DELETE all instructors
 def delete_all():
     sql = "DELETE FROM public.instructors"
     run_sql(sql)
 
-
-# DELETE an instructor
 def delete_one(id):
     sql = "DELETE  FROM instructors WHERE id = %s"
     value = [id]
     run_sql(sql, value)
 
-
-# UPDATE an instructor
 def edit(instructor):
     sql = "UPDATE instructors SET  (first_name, last_name, address, phone_number, date_of_birth) = (%s, %s, %s, %s, %s) WHERE id = %s;"
     values = [

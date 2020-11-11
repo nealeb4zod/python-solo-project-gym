@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
-
 from models.member import Member
 from models.activity import Activity
+
 
 def get_activities(user_id):
     activities = []
@@ -24,7 +24,6 @@ def get_activities(user_id):
         activities.append(activity)
     return activities
 
-# CREATE member
 def new(member):
     sql = "INSERT INTO members( first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership ) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s ) RETURNING *;"
     values = [
@@ -42,8 +41,6 @@ def new(member):
     member.id = results[0]["id"]
     return member
 
-
-# SELECT all members
 def get_all():
     members = []
 
@@ -66,6 +63,7 @@ def get_all():
         members.append(member)
 
     return members
+
 def get_all_active():
     members = []
 
@@ -111,8 +109,6 @@ def get_all_inactive():
 
     return members
 
-
-# SELECT an member
 def get_one(id):
     sql = "SELECT * FROM members WHERE id = %s"
     value = [id]
@@ -133,21 +129,15 @@ def get_one(id):
         )
     return member
 
-
-# DELETE all members
 def delete_all():
     sql = "DELETE FROM public.members"
     run_sql(sql)
 
-
-# DELETE an member
 def delete_one(id):
     sql = "DELETE  FROM members WHERE id = %s"
     value = [id]
     run_sql(sql, value)
 
-
-# UPDATE an member
 def edit(member):
     sql = "UPDATE members SET (first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership) = (%s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s;"
     values = [

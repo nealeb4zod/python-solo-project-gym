@@ -1,13 +1,10 @@
 from flask import render_template, request, redirect
 from flask import Blueprint
-
 from models.booking import Booking
-
 import repositories.booking_repository as booking_repository
 import repositories.member_repository as member_repository
 import repositories.activity_repository as activity_repository
 import repositories.membership_type_repository as membership_type_repository
-
 
 bookings_blueprint = Blueprint("bookings", __name__)
 
@@ -50,7 +47,6 @@ def create_booking_from_member():
     activity_membership_type = membership_type_repository.get_one(activity.membership_type)
     current_bookings = len(activity_repository.get_members(activity_id))
     activities = activity_repository.get_all_active()
-    # import pdb; pdb.set_trace()
     if booking_repository.check_booking_exists(activity_id, member_id) == True:
         error = "Already booked!"
         return render_template("bookings/new-member.html", member=member, activities=activities, title="New Booking", error=error)

@@ -1,9 +1,5 @@
 from db.run_sql import run_sql
-
 from models.membership_type import MembershipType
-
-# CREATE membership_type
-
 
 def new(membership_type):
     sql = "INSERT INTO membership_types ( type ) VALUES ( %s ) RETURNING *;"
@@ -14,8 +10,6 @@ def new(membership_type):
     membership_type.id = results[0]["id"]
     return membership_type
 
-
-# SELECT all membership_types
 def get_all():
     membership_types = []
 
@@ -30,8 +24,6 @@ def get_all():
         membership_types.append(membership_type)
     return membership_types
 
-
-# SELECT an membership_type
 def get_one(id):
     sql = "SELECT * FROM membership_types WHERE id = %s"
     value = [id]
@@ -44,21 +36,15 @@ def get_one(id):
         )
     return membership_type
 
-
-# DELETE all membership_types
 def delete_all():
     sql = "DELETE FROM public.membership_types"
     run_sql(sql)
 
-
-# DELETE an membership_type
 def delete_one(id):
     sql = "DELETE  FROM membership_types WHERE id = %s"
     value = [id]
     run_sql(sql, value)
 
-
-# UPDATE an membership_type
 def edit(membership_type):
     sql = "UPDATE membership_types SET (type) = (%s) WHERE id = %s;"
     values = [

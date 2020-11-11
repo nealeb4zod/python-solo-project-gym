@@ -1,8 +1,6 @@
 from flask import render_template, request, redirect
 from flask import Blueprint
-
 from models.member import Member
-
 import repositories.member_repository as member_repository
 import repositories.membership_type_repository as membership_type_repository
 
@@ -34,7 +32,6 @@ def create_member():
     membership_type_id = request.form["membership_type"]
     start_date = request.form["start_date"]
     active_membership = request.form["active_membership"]
-
     membership_type = membership_type_repository.get_one(membership_type_id)
     new_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership)
     member_repository.new(new_member)
@@ -57,7 +54,6 @@ def update_member(id):
     membership_type_id = request.form["membership_type"]
     start_date = request.form["start_date"]
     active_membership = request.form["active_membership"]
-
     membership_type = membership_type_repository.get_one(membership_type_id)
     updated_member = Member(first_name, last_name, date_of_birth, address, phone_number, email_address, membership_type, start_date, active_membership, id)
     member_repository.edit(updated_member)

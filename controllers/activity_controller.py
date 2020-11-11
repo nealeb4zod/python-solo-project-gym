@@ -1,10 +1,7 @@
 from flask import  render_template, request, redirect
 from flask import Blueprint
-
 from dateutil.parser import parse
-
 from models.activity import Activity
-
 import repositories.activity_repository as activity_repository
 import repositories.instructor_repository as instructor_repository
 import repositories.membership_type_repository as membership_type_repository
@@ -37,10 +34,8 @@ def create_activity():
     capacity = request.form["capacity"]
     membership_type_id = request.form["membership_type"]
     active = request.form["active"]
-
     datetime = date + " " + time
     date_time = parse(datetime,fuzzy=True)
-
     membership_type = membership_type_repository.get_one(membership_type_id)
     instructor = instructor_repository.get_one(instructor_id)
     new_activity = Activity(name, instructor, date_time, duration, capacity, membership_type, active)
@@ -66,13 +61,10 @@ def update_activity(id):
     capacity = request.form["capacity"]
     membership_type_id = request.form["membership_type"]
     active = request.form["active"]
-
     datetime = date + " " + time
     date_time = parse(datetime,fuzzy=True)
-
     membership_type = membership_type_repository.get_one(membership_type_id)
     instructor = instructor_repository.get_one(instructor_id)
-
     updated_activity = Activity(name, instructor, date_time, duration, capacity, membership_type, active, id)
     activity_repository.edit(updated_activity)
     return redirect("/activities")
