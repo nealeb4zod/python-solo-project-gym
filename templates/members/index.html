@@ -3,9 +3,10 @@
 {% block content %}
 
 <div class="flexcards">
-  <!-- <div class="add-card">
-        <a href="/members/new"><img id="add-new" src="{{url_for('static', filename='images/icons8-add-new-96.png')}}" alt="Plus symbol" ></a>
-    </div> -->
+  <div class="add-card">
+    <span></span>
+    <a href="/members/new"><i class="fas fa-user-plus"></i></a>
+  </div>
   {% for member in members %}
   <div class="card">
     <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
@@ -13,19 +14,19 @@
     <p id="mem-no">Membership No: {{member.id}}</p>
     <hr>
     <p>
-      <a class="card-btn" href="/members/{{member.id}}">Details</a>
+      <a class="card-btn" href="/members/{{member.id}}"><i class="fas fa-info-circle"></i> Details</a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
+      <a class="card-btn" href="/bookings/new/member/{{member.id}}"><i class="fas fa-plus-circle"></i> Make Booking</a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/members/{{member.id}}/edit">Edit</i></a>
+      <a class="card-btn" href="/members/{{member.id}}/edit"><i class="fas fa-pen-square"></i> Edit</i></a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/members/{{member.id}}/delete">Delete</i></a>
+      <a class="card-btn" href="/members/{{member.id}}/delete"><i class="fas fa-times-circle"></i> Delete</i></a>
     </p>
     <hr>
   </div>

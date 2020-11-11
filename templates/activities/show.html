@@ -46,17 +46,20 @@
       {% for member in activity_members %}
       <li>
         <a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}}</a>
-        <a class="del-btn" href="/bookings/delete/activity/{{member.id}}/{{activity.id}}">Remove Member</a>
+        <a class="del-btn" href="/bookings/delete/activity/{{member.id}}/{{activity.id}}"><i
+            class="fas fa-times-circle"></i> Remove Member</a>
       </li>
       {% endfor %}
     </ul>
     <hr>
     <p id="list-links">
-      <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit Activity Details</i></a>
+      <a class="card-btn" href="/activities/{{activity.id}}/edit"><i class="fas fa-pen-square"></i> Edit Activity
+        Details</i></a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/bookings/new/activity/{{activity.id}}">Make a Booking</a>
+      <a class="card-btn" href="/bookings/new/activity/{{activity.id}}"><i class="fas fa-plus-square"></i> Make a
+        Booking</a>
     </p>
   </section>
 

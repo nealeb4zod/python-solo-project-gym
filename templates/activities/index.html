@@ -2,9 +2,10 @@
 
 {% block content %}
 <div class="flexcards">
-  <!-- <div class="add-card">
-        <a href="/activities/new"><img id="add-new" src="{{url_for('static', filename='images/icons8-add-new-96.png')}}" alt="Plus symbol" ></a>
-    </div> -->
+  <div class="add-card">
+    <span></span>
+    <a href="/activities/new"><i class="fas fa-plus"></i></i></a>
+  </div>
   {% for activity in activities %}
   <div class="card">
     <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
@@ -13,19 +14,20 @@
     <h5>{{activity.date_time.strftime("%X")}}</h5>
     <hr>
     <p>
-      <a class="card-btn" href="/activities/{{activity.id}}">Details</a>
+      <a class="card-btn" href="/activities/{{activity.id}}"><i class="fas fa-info-circle"></i> Details</a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/bookings/new/activity/{{activity.id}}">Make a Booking</a>
+      <a class="card-btn" href="/bookings/new/activity/{{activity.id}}"><i class="fas fa-plus-circle"></i> Make a
+        Booking</a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/activities/{{activity.id}}/edit">Edit</i></a>
+      <a class="card-btn" href="/activities/{{activity.id}}/edit"><i class="fas fa-pen-square"></i> Edit</i></a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/activities/{{activity.id}}/delete">Delete</i></a>
+      <a class="card-btn" href="/activities/{{activity.id}}/delete"><i class="fas fa-times-circle"></i> Delete</a>
     </p>
     <hr>
   </div>

@@ -2,27 +2,29 @@
 
 {% block content %}
 <div class="flexcards">
-    <!-- <div class="add-card">
-        <a href="/instructors/new"><img id="add-new" src="{{url_for('static', filename='images/icons8-add-new-96.png')}}" alt="Plus symbol" ></a>
-    </div> -->
-    {% for instructor in instructors %}
-        <div class="card">
-            <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo" >
-            <h4 id="name"><b>{{instructor.first_name}} {{instructor.last_name}}</b></h4>
-            <hr>
-            <p>
-                <a class="card-btn" href="/instructors/{{instructor.id}}">Details</a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/instructors/{{instructor.id}}/edit">Edit</i></a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/instructors/{{instructor.id}}/delete">Delete</i></a>
-            </p>
-            <hr>
-        </div>
-    {% endfor %}
+  <div class="add-card">
+    <span></span>
+    <a href="/instructors/new"><i class="fas fa-user-plus"></i></a>
+  </div>
+  {% for instructor in instructors %}
+  <div class="card">
+    <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
+    <h4 id="name"><b>{{instructor.first_name}} {{instructor.last_name}}</b></h4>
+    <hr>
+    <p>
+      <a class="card-btn" href="/instructors/{{instructor.id}}"><i class="fas fa-info-circle"></i> Details</a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/instructors/{{instructor.id}}/edit"><i class="fas fa-pen-square"></i> Edit</i></a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/instructors/{{instructor.id}}/delete"><i class="fas fa-times-circle"></i>
+        Delete</i></a>
+    </p>
+    <hr>
+  </div>
+  {% endfor %}
 </div>
 {% endblock content %}

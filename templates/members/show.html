@@ -47,17 +47,20 @@
       <li>
         <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} -
           {{activity.date_time.strftime("%I:%M %p")}}</a>
-        <a class="del-btn" href="/bookings/delete/members/{{member.id}}/{{activity.id}}">Delete Booking</a>
+        <a class="del-btn" href="/bookings/delete/members/{{member.id}}/{{activity.id}}"><i
+            class="fas fa-times-circle"></i> Delete Booking</a>
       </li>
       {% endfor %}
     </ul>
     <hr>
     <p>
-      <a class="card-btn" href="/members/{{member.id}}/edit">Edit member details</i></a>
+      <a class="card-btn" href="/members/{{member.id}}/edit"><i class="fas fa-pen-square"></i> Edit member
+        details</i></a>
     </p>
     <hr>
     <p>
-      <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
+      <a class="card-btn" href="/bookings/new/member/{{member.id}}"><i class="fas fa-plus-square"></i> Make
+        Booking</a>
     </p>
   </section>
 </section>
