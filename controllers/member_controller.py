@@ -9,7 +9,7 @@ import repositories.membership_type_repository as membership_type_repository
 members_blueprint = Blueprint("members", __name__)
 
 @members_blueprint.route("/members")
-def members():
+def members_index():
     members = member_repository.get_all_active()
     return render_template("members/index.html", members=members, title="Members")
 

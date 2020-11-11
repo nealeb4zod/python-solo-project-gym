@@ -1,7 +1,8 @@
 body {
   margin: 0;
   background-color: #edd9d4;
-  color: #c7c7c7;
+  color: #58595b;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 #header > img {

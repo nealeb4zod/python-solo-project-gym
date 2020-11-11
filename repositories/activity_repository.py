@@ -70,7 +70,7 @@ def get_all():
 def get_all_active():
     activities = []
 
-    sql = "SELECT * FROM activities WHERE active = true"
+    sql = "SELECT * FROM activities WHERE active = true ORDER BY date_time ASC"
     results = run_sql(sql)
 
     for row in results:
@@ -90,7 +90,7 @@ def get_all_active():
 def get_all_inactive():
     activities = []
 
-    sql = "SELECT * FROM activities WHERE active = false"
+    sql = "SELECT * FROM activities WHERE active = false ORDER BY date_time ASC"
     results = run_sql(sql)
 
     for row in results:

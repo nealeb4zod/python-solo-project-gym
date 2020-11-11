@@ -46,6 +46,10 @@
   justify-items: centre;
 }
 
+.card-home a {
+  color: #58595b;
+}
+
 /* On mouse-over, add a deeper shadow */
 .card-home:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

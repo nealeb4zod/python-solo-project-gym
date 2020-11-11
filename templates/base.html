@@ -1,60 +1,66 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='show.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
-    <script src="https://kit.fontawesome.com/3b9a04f840.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
-    <title>{{ title }} || East Side Gym</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='show.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <script src="https://kit.fontawesome.com/3b9a04f840.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+  <title>{{ title }} || Creeds Gym</title>
 </head>
+
+
+<header>
+  <hgroup id="header">
+    <!-- <img id="logo" src="{{url_for('static', filename='images/logo2.png')}}" alt="Kettlebell, barbell logo"> -->
+    <i class="fas fa-dumbbell"></i>
+    <span>Creeds Gym</span>
+    <i class="fas fa-dumbbell"></i>
+    <!-- <img id="logo" src="{{url_for('static', filename='images/logo2.png')}}" alt="Kettlebell, barbell logo"> -->
+  </hgroup>
+  <nav class="navbar">
+    <a id="home" href="/">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Members
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/members">View all Members</a>
+        <a href="/members/new">Add A Member</a>
+        <a href="/members/inactive">Inactive Members</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Activities
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/activities">View all Activities</a>
+        <a href="/activities/new">Add an Activity</a>
+        <a href="/activities/inactive">Inactive Activities</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Instructors
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/instructors">View all Instructors</a>
+        <a href="/instructors/new">Add an Instructor</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <body>
-    <hgroup id="header">
-        <!-- <img id="logo" src="{{url_for('static', filename='images/logo2.png')}}" alt="Kettlebell, barbell logo"> -->
-        <i class="fas fa-dumbbell"></i>
-        <span>East Side Gym</span>
-        <i class="fas fa-dumbbell"></i>
-        <!-- <img id="logo" src="{{url_for('static', filename='images/logo2.png')}}" alt="Kettlebell, barbell logo"> -->
-    </hgroup>
-    <nav class="navbar">
-        <a id="home" href="/">Home</a>
-        <div class="dropdown">
-            <button class="dropbtn">Members
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/members">View all Members</a>
-                <a href="/members/new">Add A Member</a>
-                <a href="/members/inactive">Inactive Members</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Activities
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/activities">View all Activities</a>
-                <a href="/activities/new">Add an Activity</a>
-                <a href="/activities/inactive">Inactive Activities</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Instructors
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/instructors">View all Instructors</a>
-                <a href="/instructors/new">Add an Instructor</a>
-            </div>
-        </div>
-    </nav>
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
 </body>
 
 <footer class="footer">
-<p>
+  <p>
     100 Long Street,
     <br>
     Fifth Floor,
@@ -64,7 +70,7 @@
     MA 02110-1301,
     <br>
     USA.
-</p>
+  </p>
 
 </footer>
 

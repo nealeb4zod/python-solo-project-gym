@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="flexcards">
-    <!-- <div class="add-card">
+  <!-- <div class="add-card">
         <a href="/members/new"><img id="add-new" src="{{url_for('static', filename='images/icons8-add-new-96.png')}}" alt="Plus symbol" ></a>
     </div> -->
-    {% for member in members %}
-        <div class="card">
-            <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo" >
-            <h4 id="name"><b>{{member.first_name}} {{member.last_name}}</b></h4>
-            <p id="mem-no">Membership No: {{member.id}}</p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/members/{{member.id}}">Details</a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/members/{{member.id}}/edit">Edit</i></a>
-            </p>
-            <hr>
-            <p>
-                <a class="card-btn" href="/members/{{member.id}}/delete">Delete</i></a>
-            </p>
-            <hr>
-        </div>
-    {% endfor %}
+  {% for member in members %}
+  <div class="card">
+    <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
+    <h4 id="name"><b>{{member.first_name}} {{member.last_name}}</b></h4>
+    <p id="mem-no">Membership No: {{member.id}}</p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/members/{{member.id}}">Details</a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/bookings/new/member/{{member.id}}">Make Booking</a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/members/{{member.id}}/edit">Edit</i></a>
+    </p>
+    <hr>
+    <p>
+      <a class="card-btn" href="/members/{{member.id}}/delete">Delete</i></a>
+    </p>
+    <hr>
+  </div>
+  {% endfor %}
 </div>
 {% endblock content %}
