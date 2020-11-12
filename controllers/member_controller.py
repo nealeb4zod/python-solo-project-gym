@@ -63,7 +63,7 @@ def update_member(id):
 def show_details(id):
     member = member_repository.get_one(id)
     booked_activities = member_repository.get_activities(id)
-    membership_type = membership_type_repository.get_one(member.membership_type)
+    membership_type = membership_type_repository.get_one(member.membership_type.id)
     return render_template("/members/show.html", member=member, membership_type=membership_type, booked_activities=booked_activities, title="Member Details")
 
 @members_blueprint.route("/members/<id>/delete")

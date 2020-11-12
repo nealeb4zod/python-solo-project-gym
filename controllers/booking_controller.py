@@ -31,8 +31,8 @@ def create_booking_from_activity():
     member_id = request.form["member"]
     activity = activity_repository.get_one(activity_id)
     member = member_repository.get_one(member_id)
-    member_membership_type = membership_type_repository.get_one(member.membership_type)
-    activity_membership_type = membership_type_repository.get_one(activity.membership_type)
+    member_membership_type = membership_type_repository.get_one(member.membership_type.id)
+    activity_membership_type = membership_type_repository.get_one(activity.membership_type.id)
     current_bookings = len(activity_repository.get_members(activity_id))
     activities = activity_repository.get_all_active()
     if booking_repository.check_booking_exists(activity_id, member_id) == True:
@@ -56,8 +56,8 @@ def create_booking_from_member():
     member_id = request.form["member"]
     activity = activity_repository.get_one(activity_id)
     member = member_repository.get_one(member_id)
-    member_membership_type = membership_type_repository.get_one(member.membership_type)
-    activity_membership_type = membership_type_repository.get_one(activity.membership_type)
+    member_membership_type = membership_type_repository.get_one(member.membership_type.id)
+    activity_membership_type = membership_type_repository.get_one(activity.membership_type.id)
     current_bookings = len(activity_repository.get_members(activity_id))
     activities = activity_repository.get_all_active()
     if booking_repository.check_booking_exists(activity_id, member_id) == True:

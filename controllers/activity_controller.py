@@ -48,7 +48,7 @@ def edit_activity(id):
     membership_types = membership_type_repository.get_all()
     activity = activity_repository.get_one(id)
     instructor = instructor_repository.get_one(activity.instructor)
-    membership_type = membership_type_repository.get_one(activity.membership_type)
+    membership_type = membership_type_repository.get_one(activity.membership_type.id)
     return render_template("/activities/edit.html", activity=activity, instructor=instructor, membership_type=membership_type, instructors=instructors, membership_types=membership_types, title="Edit Activity Details")
 
 @activities_blueprint.route("/activities/<id>", methods=["POST"])
@@ -72,7 +72,7 @@ def update_activity(id):
 @activities_blueprint.route("/activities/<id>")
 def show_details(id):
     activity = activity_repository.get_one(id)
-    membership_type = membership_type_repository.get_one(activity.membership_type)
+    membership_type = membership_type_repository.get_one(activity.membership_type.id)
     activity_members = activity_repository.get_members(id)
     no_members_booked = len(activity_members)
     instructor = instructor_repository.get_one(activity.instructor)

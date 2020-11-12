@@ -10,8 +10,8 @@
   <label for="member">Member:</label>
   <select id="member" name="member">
     {% for member in members %}
-    {% if member.membership_type == activity.membership_type %}
-    <option value="{{ member.id}}">{{ member.first_name }} {{ member.last_name }} - {{ member.membership_type }}
+    {% if member.membership_type.type == activity.membership_type.type %}
+    <option value="{{ member.id}}">{{ member.first_name }} {{ member.last_name }} - {{ member.membership_type.type }}
     </option>
     {% endif %}
     {% endfor %}

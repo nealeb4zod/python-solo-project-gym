@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import os
 from controllers.member_controller import members_blueprint
 from controllers.instructor_controller import instructors_blueprint
 from controllers.activity_controller import activities_blueprint
@@ -19,5 +18,4 @@ def home():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host="0.0.0.0", port=port)
+    app.run(debug=True)
