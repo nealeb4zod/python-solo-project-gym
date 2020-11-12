@@ -1,6 +1,9 @@
+import repositories.membership_type_repository as membership_type_repository
+
 from db.run_sql import run_sql
 from models.activity import Activity
 from models.member import Member
+
 
 
 def get_members(id):
@@ -48,13 +51,14 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         activity = Activity(
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
-            row["membership_type"],
+            membership_type,
             row["active"],
             row["id"],
         )
@@ -68,13 +72,14 @@ def get_all_active():
     results = run_sql(sql)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         activity = Activity(
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
-            row["membership_type"],
+            membership_type,
             row["active"],
             row["id"],
         )
@@ -88,13 +93,14 @@ def get_all_inactive():
     results = run_sql(sql)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         activity = Activity(
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
-            row["membership_type"],
+            membership_type,
             row["active"],
             row["id"],
         )
@@ -107,13 +113,14 @@ def get_one(id):
     result = run_sql(sql, value)[0]
 
     if result is not None:
+        membership_type = membership_type_repository.get_one(result["membership_type"])
         activity = Activity(
             result["name"],
             result["instructor"],
             result["date_time"],
             result["duration"],
             result["capacity"],
-            result["membership_type"],
+            membership_type,
             result["active"],
             result["id"],
         )
