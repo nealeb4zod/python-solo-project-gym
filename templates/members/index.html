@@ -11,8 +11,7 @@
   <div class="card">
     <img id="logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Kettlebell, barbell logo">
     <h4 id="name"><b>{{member.first_name}} {{member.last_name}}</b></h4>
-    <h5>Membership No: {{member.id}}</h5>
-    <h5>{{member.membership_type.type}}</h5>
+    <p id="mem-no">Membership No: {{member.id}}</p>
     <hr>
     <p>
       <a class="card-btn" href="/members/{{member.id}}"><i class="fas fa-info-circle"></i> Details</a>

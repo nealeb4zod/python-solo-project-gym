@@ -11,8 +11,7 @@
   <label for="activity">Activity:</label>
   <select id="activity" name="activity">
     {% for activity in activities %}
-    <option value="{{ activity.id }}">{{ activity.name }} - {{activity.membership_type.type}} -
-      {{activity.date_time.strftime("%d/%m/%Y")}} -
+    <option value="{{ activity.id }}">{{ activity.name }} - {{activity.date_time.strftime("%d/%m/%Y")}} -
       {{activity.date_time.strftime("%X")}}</option>
     {% endfor %}
   </select>
