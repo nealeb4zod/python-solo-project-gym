@@ -1,3 +1,5 @@
+import repositories.membership_type_repository as membership_type_repository
+
 from db.run_sql import run_sql
 from models.member import Member
 from models.activity import Activity
@@ -11,13 +13,14 @@ def get_activities(user_id):
     results = run_sql(sql, value)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         activity = Activity(
             row["name"],
             row["instructor"],
             row["date_time"],
             row["duration"],
             row["capacity"],
-            row["membership_type"],
+            membership_type,
             row["active"],
             row["id"],
         )
@@ -48,6 +51,7 @@ def get_all():
     results = run_sql(sql)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         member = Member(
             row["first_name"],
             row["last_name"],
@@ -55,7 +59,7 @@ def get_all():
             row["address"],
             row["phone_number"],
             row["email_address"],
-            row["membership_type"],
+            membership_type,
             row["start_date"],
             row["active_membership"],
             row["id"]
@@ -71,6 +75,7 @@ def get_all_active():
     results = run_sql(sql)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         member = Member(
             row["first_name"],
             row["last_name"],
@@ -78,7 +83,7 @@ def get_all_active():
             row["address"],
             row["phone_number"],
             row["email_address"],
-            row["membership_type"],
+            membership_type,
             row["start_date"],
             row["active_membership"],
             row["id"]
@@ -93,6 +98,7 @@ def get_all_inactive():
     results = run_sql(sql)
 
     for row in results:
+        membership_type = membership_type_repository.get_one(row["membership_type"])
         member = Member(
             row["first_name"],
             row["last_name"],
@@ -100,7 +106,7 @@ def get_all_inactive():
             row["address"],
             row["phone_number"],
             row["email_address"],
-            row["membership_type"],
+            membership_type,
             row["start_date"],
             row["active_membership"],
             row["id"]
@@ -115,6 +121,7 @@ def get_one(id):
     result = run_sql(sql, value)[0]
 
     if result is not None:
+        membership_type = membership_type_repository.get_one(result["membership_type"])
         member = Member(
             result["first_name"],
             result["last_name"],
@@ -122,7 +129,7 @@ def get_one(id):
             result["address"],
             result["phone_number"],
             result["email_address"],
-            result["membership_type"],
+            membership_type,
             result["start_date"],
             result["active_membership"],
             result["id"],
