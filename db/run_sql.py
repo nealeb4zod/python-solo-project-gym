@@ -1,13 +1,15 @@
 import psycopg2
 import psycopg2.extras as ext
+import os
 
+DB_URI = os.environ.get('DB_URI')
 
 def run_sql(sql, values=None):
     conn = None
     results = []
 
     try:
-        conn = psycopg2.connect("dbname=gym")
+        conn = psycopg2.connect(DB_URI, sslmode='require')
         cur = conn.cursor(cursor_factory=ext.DictCursor)
         cur.execute(sql, values)
         conn.commit()
