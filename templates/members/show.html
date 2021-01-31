@@ -47,7 +47,7 @@
       <li>
         <a href="/activities/{{ activity.id }}"> {{activity.name}} - {{activity.date_time.strftime("%d/%m/%Y")}} -
           {{activity.date_time.strftime("%I:%M %p")}}</a>
-        <a class="del-btn" href="/bookings/delete/members/{{member.id}}/{{activity.id}}"><i
+        <a class="del-btn" href="/bookings/delete/member/{{member.id}}/{{activity.id}}"><i
             class="fas fa-times-circle"></i> Delete Booking</a>
       </li>
       {% endfor %}
